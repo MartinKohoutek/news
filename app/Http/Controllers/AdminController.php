@@ -46,6 +46,11 @@ class AdminController extends Controller
 
         $user->save();
 
-        return redirect()->back();
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Profile Updated Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }
