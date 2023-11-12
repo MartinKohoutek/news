@@ -121,6 +121,134 @@
         </div>
     </div><!--end row-->
 
+    <div class="row">
+        <div class="col-12">
+            <div class="card rounded-4">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-0">Recent Orders</h6>
+                        </div>
+                        <div class="dropdown ms-auto">
+                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="javascript:;">Action</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Photo</th>
+                                    <th>Product ID</th>
+                                    <th>Status</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Shipping</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Iphone 5</td>
+                                    <td><img src="assets/images/products/01.png" class="product-img-2" alt="product img"></td>
+                                    <td>#9405822</td>
+                                    <td><span class="btn btn-outline-success btn-sm px-4 rounded-5 w-100">Completed</span></td>
+                                    <td>$1250.00</td>
+                                    <td>03 Feb 2020</td>
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Earphone GL</td>
+                                    <td><img src="assets/images/products/02.png" class="product-img-2" alt="product img"></td>
+                                    <td>#8304620</td>
+                                    <td><span class="btn btn-outline-warning btn-sm px-4 rounded-5 w-100">Pending</span></td>
+                                    <td>$1500.00</td>
+                                    <td>05 Feb 2020</td>
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-gradient-blooker" role="progressbar" style="width: 60%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>HD Hand Camera</td>
+                                    <td><img src="assets/images/products/03.png" class="product-img-2" alt="product img"></td>
+                                    <td>#4736890</td>
+                                    <td><span class="btn btn-outline-danger btn-sm px-4 rounded-5 w-100">Failed</span></td>
+                                    <td>$1400.00</td>
+                                    <td>06 Feb 2020</td>
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-gradient-bloody" role="progressbar" style="width: 70%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Clasic Shoes</td>
+                                    <td><img src="assets/images/products/04.png" class="product-img-2" alt="product img"></td>
+                                    <td>#8543765</td>
+                                    <td><span class="btn btn-outline-success btn-sm px-4 rounded-5 w-100">Paid</span></td>
+                                    <td>$1200.00</td>
+                                    <td>14 Feb 2020</td>
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sitting Chair</td>
+                                    <td><img src="assets/images/products/06.png" class="product-img-2" alt="product img"></td>
+                                    <td>#9629240</td>
+                                    <td><span class="btn btn-outline-warning btn-sm px-4 rounded-5 w-100">Pending</span></td>
+                                    <td>$1500.00</td>
+                                    <td>18 Feb 2020</td>
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-gradient-blooker" role="progressbar" style="width: 60%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Hand Watch</td>
+                                    <td><img src="assets/images/products/05.png" class="product-img-2" alt="product img"></td>
+                                    <td>#8506790</td>
+                                    <td><span class="btn btn-outline-danger btn-sm px-4 rounded-5 w-100">Failed</span></td>
+                                    <td>$1800.00</td>
+                                    <td>21 Feb 2020</td>
+                                    <td>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-gradient-bloody" role="progressbar" style="width: 40%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end row-->
 
     <div class="row">
         <div class="col-12 col-lg-4 d-flex">
@@ -363,365 +491,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div><!--end row-->
-
-    <div class="row">
-        <div class="col-12 col-lg-4 d-flex">
-            <div class="card rounded-4 w-100">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h6 class="mb-0">Browser Statistics</h6>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="chart6"></div>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center border-top">Chrome <span class="badge bg-danger rounded-pill">10</span>
-                    </li>
-                    <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Opera <span class="badge bg-primary rounded-pill">65</span>
-                    </li>
-                    <li class="list-group-item d-flex bg-transparent justify-content-between align-items-center">Firefox <span class="badge bg-warning text-dark rounded-pill">14</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-12 col-lg-8 d-flex">
-            <div class="card rounded-4 w-100">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h6 class="mb-0">Top Selling Countries</h6>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div id="geographic-map-2" style="height: 280px;"></div>
-                </div>
-                <table class="table table-borderless align-items-center">
-                    <tbody>
-                        <tr>
-                            <td><i class="bx bxs-circle me-2" style="color: #5a52db;"></i> Russia</td>
-                            <td>18 %</td>
-                            <td><i class="bx bxs-circle me-2" style="color: #f09c15;"></i> Australia</td>
-                            <td>14.2 %</td>
-                        </tr>
-                        <tr>
-                            <td><i class="bx bxs-circle me-2" style="color: #b659ff;"></i> India</td>
-                            <td>15 %</td>
-                            <td><i class="bx bxs-circle me-2" style="color: #2ccc72;"></i> United States</td>
-                            <td>11.6 %</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </div><!--end row-->
-
-    <div class="row">
-        <div class="col-12">
-            <div class="card rounded-4">
-                <div class="card-header">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h6 class="mb-0">Recent Orders</h6>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Photo</th>
-                                    <th>Product ID</th>
-                                    <th>Status</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Shipping</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Iphone 5</td>
-                                    <td><img src="assets/images/products/01.png" class="product-img-2" alt="product img"></td>
-                                    <td>#9405822</td>
-                                    <td><span class="btn btn-outline-success btn-sm px-4 rounded-5 w-100">Completed</span></td>
-                                    <td>$1250.00</td>
-                                    <td>03 Feb 2020</td>
-                                    <td>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Earphone GL</td>
-                                    <td><img src="assets/images/products/02.png" class="product-img-2" alt="product img"></td>
-                                    <td>#8304620</td>
-                                    <td><span class="btn btn-outline-warning btn-sm px-4 rounded-5 w-100">Pending</span></td>
-                                    <td>$1500.00</td>
-                                    <td>05 Feb 2020</td>
-                                    <td>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar bg-gradient-blooker" role="progressbar" style="width: 60%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>HD Hand Camera</td>
-                                    <td><img src="assets/images/products/03.png" class="product-img-2" alt="product img"></td>
-                                    <td>#4736890</td>
-                                    <td><span class="btn btn-outline-danger btn-sm px-4 rounded-5 w-100">Failed</span></td>
-                                    <td>$1400.00</td>
-                                    <td>06 Feb 2020</td>
-                                    <td>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar bg-gradient-bloody" role="progressbar" style="width: 70%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>Clasic Shoes</td>
-                                    <td><img src="assets/images/products/04.png" class="product-img-2" alt="product img"></td>
-                                    <td>#8543765</td>
-                                    <td><span class="btn btn-outline-success btn-sm px-4 rounded-5 w-100">Paid</span></td>
-                                    <td>$1200.00</td>
-                                    <td>14 Feb 2020</td>
-                                    <td>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Sitting Chair</td>
-                                    <td><img src="assets/images/products/06.png" class="product-img-2" alt="product img"></td>
-                                    <td>#9629240</td>
-                                    <td><span class="btn btn-outline-warning btn-sm px-4 rounded-5 w-100">Pending</span></td>
-                                    <td>$1500.00</td>
-                                    <td>18 Feb 2020</td>
-                                    <td>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar bg-gradient-blooker" role="progressbar" style="width: 60%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Hand Watch</td>
-                                    <td><img src="assets/images/products/05.png" class="product-img-2" alt="product img"></td>
-                                    <td>#8506790</td>
-                                    <td><span class="btn btn-outline-danger btn-sm px-4 rounded-5 w-100">Failed</span></td>
-                                    <td>$1800.00</td>
-                                    <td>21 Feb 2020</td>
-                                    <td>
-                                        <div class="progress" style="height: 6px;">
-                                            <div class="progress-bar bg-gradient-bloody" role="progressbar" style="width: 40%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--end row-->
-
-
-    <div class="row">
-        <div class="col-12 col-lg-12 col-xl-12 col-xxl-12 d-flex">
-            <div class="card rounded-4 w-100">
-
-                <div class="card-body">
-                    <div class="row row-cols-1 row-cols-lg-3 g-3">
-                        <div class="col">
-                            <div class="card border shadow-none rounded-4 mb-0">
-                                <div class="card-body text-center">
-                                    <div id="chart7"></div>
-                                    <p class="mb-0">New Visits</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card border shadow-none rounded-4 mb-0">
-                                <div class="card-body text-center">
-                                    <div id="chart8"></div>
-                                    <p class="mb-0">Bounce Rate</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card border shadow-none rounded-4 mb-0">
-                                <div class="card-body text-center">
-                                    <div id="chart9"></div>
-                                    <p class="mb-0">Server Load</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card border shadow-none rounded-4 mb-0">
-                                <div class="card-body text-center">
-                                    <div id="chart10"></div>
-                                    <p class="mb-0">Used RAM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card border shadow-none rounded-4 mb-0">
-                                <div class="card-body text-center">
-                                    <div id="chart11"></div>
-                                    <p class="mb-0">Web Traffic</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card border shadow-none rounded-4 mb-0">
-                                <div class="card-body text-center">
-                                    <div id="chart12"></div>
-                                    <p class="mb-0">Page Views</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!--end row-->
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-xl-12 col-xxl-12 d-flex">
-            <div class="card rounded-4 w-100">
-                <div class="card-header bg-transparent">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <h6 class="mb-0">Traffic Referrals</h6>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive p-3">
-                    <table class="table align-items-center mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Referral</th>
-                                <th>Visitors</th>
-                                <th>Unique Users</th>
-                                <th>Bounce Rate</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Facebook</td>
-                                <td>8,584</td>
-                                <td>263</td>
-                                <td>12.5% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Twetter</td>
-                                <td>7,682</td>
-                                <td>563</td>
-                                <td>32.2% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Instagram</td>
-                                <td>5,524</td>
-                                <td>274</td>
-                                <td>14.7% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                            <tr>
-                                <td>LinkedIn</td>
-                                <td>5,574</td>
-                                <td>863</td>
-                                <td>14.7% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Google</td>
-                                <td>9,834</td>
-                                <td>963</td>
-                                <td>14.7% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Dribbble</td>
-                                <td>6,572</td>
-                                <td>897</td>
-                                <td>12.7% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                            <tr>
-                                <td>Behance</td>
-                                <td>7,634</td>
-                                <td>863</td>
-                                <td>11.3% <i class="bx bx-up-arrow-alt ms-2"></i></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
