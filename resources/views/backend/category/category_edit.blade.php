@@ -10,7 +10,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
                 </ol>
             </nav>
         </div>
@@ -23,17 +23,18 @@
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-primary"></i>
                         </div>
-                        <h5 class="mb-0 text-primary">Add Category</h5>
+                        <h5 class="mb-0 text-primary">Edit Category</h5>
                     </div>
-                    <form action="{{ route('store.category') }}" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('update.category') }}" method="post" class="row g-3" id="myForm">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $category->id }}">
                         <div class="col-md-6 form-group">
                             <label for="category_name" class="form-label">Category Name</label>
-                            <input type="text" name="category_name" class="form-control" id="category_name">
+                            <input type="text" name="category_name" class="form-control" id="category_name" value="{{ $category->category_name }}">
                         </div>
                        
                         <div class="col-12">
-                            <input type="submit" class="btn btn-primary px-5" value="Add Category" />
+                            <input type="submit" class="btn btn-primary px-5" value="Update Category" />
                         </div>
                     </form>
                 </div>
