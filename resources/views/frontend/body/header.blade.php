@@ -21,7 +21,7 @@
                             <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user"></i>Log in</a>
                         </li>
                         <li>
-                            <a href="register.html">Register</a>
+                            <a href="{{ route('register') }}">Register</a>
                         </li>
                     </ul>
                 </div>

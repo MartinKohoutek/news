@@ -54,7 +54,7 @@
                             <i class="fa fa-paper-plane"></i> Login
                         </button>
                     </form>
-                    <p>Don't have account? <a href="register.html">Register Here</a></p>
+                    <p>Don't have account? <a href="{{ route('register') }}">Register Here</a></p>
 
                 </div>
             </div>
