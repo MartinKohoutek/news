@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="">
                     </a>
                 </div>
@@ -17,12 +17,21 @@
                         <li>
                             <i class="fa fa-clock-o"></i>Monday 15.01.2018
                         </li>
+                        @auth
+                        <li>
+                            <a href="{{ route('user.logout') }}">Logout</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('dashboard') }}"><i class="fa fa-user"></i>Dashboard</a>
+                        </li>
+                        @else    
                         <li>
                             <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user"></i>Log in</a>
                         </li>
                         <li>
                             <a href="{{ route('register') }}">Register</a>
                         </li>
+                        @endauth
                     </ul>
                 </div>
             </div>

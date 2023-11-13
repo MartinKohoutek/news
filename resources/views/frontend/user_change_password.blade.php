@@ -101,9 +101,9 @@
         <!-- register box -->
         <div class="register-box">
             <div class="title-section">
-                <h1><span>User Account</span></h1>
+                <h1><span>User Change Password</span></h1>
             </div>
-            <form action="{{ route('user.profile.store') }}" method="post" id="register-form" enctype="multipart/form-data">
+            <form action="{{ route('user.update.password') }}" method="post" id="register-form">
                 @csrf
                 @if (Session::has('status'))
                 <div class="alert alert-success border-0 bg-success alert-dismissible fade show py-2">
@@ -119,59 +119,55 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                @elseif (Session::has('error'))
+                <div class="alert alert-danger border-0 bg-danger alert-dismissible fade show py-2">
+                    <div class="d-flex align-items-center">
+                        <div class="font-35 text-white mr-2"><i class="bx bxs-message-square-x"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h6 class="mb-0 text-white">Error</h6>
+                            <div class="text-white">{{ Session::get('error') }}</div>
+                        </div>
+                    </div>
+                    <button type="button" class="close btn-close" data-dismiss="alert" aria-label="Close" style="font-size: 35px; background: transparent">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 @endif
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
                     cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                     proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="username">User Name</label>
-                        <input id="username" name="username" type="text" value="{{ $user->username }}">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="name">Name</label>
-                        <input id="name" name="name" type="text" value="{{ $user->name }}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="email">E-mail</label>
-                        <input id="email1" name="email" type="email" value="{{ $user->email }}">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="phone">Phone</label>
-                        <input id="phone" name="phone" type="text" value="{{ $user->phone }}">
-                    </div>
-                </div>
-                <div class="row">
+                <div class="row mb-3">
                     <div class="col-12">
-                        <label for="image">Photo</label>
-                        <input class="form-control-file" id="image" name="photo" type="file">
+                        <label for="old-password">Old Password</label>
+                        <input class="@error('old_password') is-invalid @enderror" id="old-password" name="old_password" type="password" style="margin-bottom: 0;">
+                        @error('old_password')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-12">
-                        <label></label>
-                        <img src="{{ (!empty($user->photo)) ? url('upload/user_images/'.$user->photo) : url('upload/no_image.jpg') }}" alt="" id="showImage" style="width: 150px; height: 150px">
+                        <label for="new-password">New Password</label>
+                        <input class="@error('new_password') is-invalid @enderror" id="new-password" name="new_password" type="password" style="margin-bottom: 0;">
+                        @error('new_password')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="new-password-confirmation">Confirm New Password</label>
+                        <input id="new-password-confirmation" name="new_password_confirmation" type="password">
                     </div>
                 </div>
                 <button type="submit" id="submit-register2">
-                    <i class="fa fa-paper-plane"></i> Update Profile
+                    <i class="fa fa-paper-plane"></i> Change Password
                 </button>
+
             </form>
         </div>
         <!-- End register box -->
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $('#image').change(function(e) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
-</script>
 @endsection

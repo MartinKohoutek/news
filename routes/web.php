@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function(){
         Route::get('/dashboard', 'UserDashboard')->name('dashboard');
         Route::post('/user/profile/store', 'UserProfileStore')->name('user.profile.store');
         Route::get('/user/logout', 'UserLogout')->name('user.logout');
+        Route::get('/user/change/password', 'UserChangePassword')->name('user.change.password');
+        Route::post('/user/update/password', 'UserUpdatePassword')->name('user.update.password');
     });
 });
 
@@ -53,6 +56,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::post('/admin/profile/store', 'AdminProfileStore')->name('admin.profile.store');
         Route::get('/admin/change/password', 'AdminChangePassword')->name('admin.change.password');
         Route::post('/admin/update/password', 'AdminUpdatePassword')->name('admin.update.password');
+    });
+
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/all/category', 'AllCategory')->name('all.category');
     });
 });
 
