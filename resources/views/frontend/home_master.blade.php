@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/modernmag-assets.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css') }}">
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 </head>
 
 <body class="boxed-style">
@@ -47,7 +47,7 @@
                         @csrf
                         <p>Welcome! Login to your account.</p>
                         <label for="email">Email Address</label>
-                        <input id="username" name="email" type="email">
+                        <input id="email" name="email" type="email">
                         <label for="password">Password</label>
                         <input id="password" name="password" type="password">
                         <button type="submit" id="submit-register">
@@ -68,7 +68,19 @@
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyCiqrIen8rWQrvJsu-7f4rOta0fmI5r2SI&amp;sensor=false&amp;language=en"></script>
     <script src="{{ asset('frontend/assets/js/gmap3.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @if (Session::has('message'))
+    <script>
+        var type = "{{ Session::get('alert-type', 'info') }}";
+        toastr.options.closeButton = true;
+        switch (type) {
+            case 'info': toastr.info("{{ Session::get('message') }}"); break;
+            case 'success': toastr.success("{{ Session::get('message') }}"); break;
+            case 'warning': toastr.warning("{{ Session::get('message') }}"); break;
+            case 'error': toastr.error("{{ Session::get('message') }}"); break;
+        }
+    </script>
+    @endif
 </body>
 
 </html>

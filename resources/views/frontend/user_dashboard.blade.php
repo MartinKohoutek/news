@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="contact-wrpp">
-                        <figure class="authorPage-image">
+                        <figure class="authorPage-image mb-3">
                             <img alt="" src="{{ (!empty($user->photo)) ? url('/upload/user_images/'.$user->photo) : url('upload/no_image.jpg') }}" class="avatar avatar-96 photo" height="120" width="120" loading="lazy">
                         </figure>
                         <h1 class="authorPage-name">
@@ -56,7 +56,7 @@
                             <li><a href=""><b>🟢 Your Profile </b></a> </li>
                             <li> <a href=""> <b>🔵 Change Password </b> </a> </li>
                             <li> <a href=""> <b>🟠 Read Later List </b> </a> </li>
-                            <li> <a href=""> <b>🟠 Logout </b> </a> </li>
+                            <li> <a href="{{ route('user.logout') }}"> <b>🟠 Logout </b> </a> </li>
                         </ul>
                     </div>
                 </div>
