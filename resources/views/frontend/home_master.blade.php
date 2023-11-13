@@ -43,11 +43,12 @@
                     <div class="title-section">
                         <h1>Login</h1>
                     </div>
-                    <form id="login-form">
+                    <form action="{{ route('login') }}" method="post" id="login-form">
+                        @csrf
                         <p>Welcome! Login to your account.</p>
-                        <label for="username">Username or Email Address*</label>
-                        <input id="username" name="username" type="text">
-                        <label for="password">Password*</label>
+                        <label for="email">Email Address</label>
+                        <input id="username" name="email" type="email">
+                        <label for="password">Password</label>
                         <input id="password" name="password" type="password">
                         <button type="submit" id="submit-register">
                             <i class="fa fa-paper-plane"></i> Login
