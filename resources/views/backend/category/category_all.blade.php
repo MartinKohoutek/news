@@ -32,17 +32,16 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($categories as $key => $item)
                         <tr>
-                            @foreach ($categories as $key => $item)
-
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $key->category_name }}</td>
+                            <td>{{ $item->category_name }}</td>
                             <td>
-                                <a href="" class="btn btn-primary px-5">Edit</a>
-                                <a href="" class="btn btn-danger px-5">Delete</a>
+                                <a href="" class="btn btn-primary radius-30">Edit</a>
+                                <a href="" class="btn btn-danger radius-30">Delete</a>
                             </td>
-                            @endforeach
                         </tr>
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>

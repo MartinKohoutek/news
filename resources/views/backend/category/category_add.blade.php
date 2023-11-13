@@ -25,14 +25,15 @@
                         </div>
                         <h5 class="mb-0 text-primary">Add Category</h5>
                     </div>
-                    <form action="" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('store.category') }}" method="post" class="row g-3" id="myForm">
+                        @csrf
                         <div class="col-md-6 form-group">
                             <label for="category_name" class="form-label">Category Name</label>
                             <input type="text" name="category_name" class="form-control" id="category_name">
                         </div>
                        
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary px-5">Add Category</button>
+                            <input type="submit" class="btn btn-primary px-5" value=">Add Category" />
                         </div>
                     </form>
                 </div>
