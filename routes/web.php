@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return view('frontend.index');
+// });
+
+Route::controller(IndexController::class)->group(function(){
+    Route::get('/', 'Index')->name('index');
 });
 
 Route::get('/dashboard', function () {
