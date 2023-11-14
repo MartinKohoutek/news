@@ -81,6 +81,6 @@ class AdminManageController extends Controller
             $user->save();
         }
 
-        return response()->json(['message' => 'Admin Status Updated Successfully!'.$is_checked]);
+        return response()->json(['message' => 'Admin Status Updated Successfully!']);
     }
 }
