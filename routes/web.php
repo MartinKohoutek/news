@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AdminManageController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +75,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/edit/subcategory/{id}', 'EditSubCategory')->name('edit.subcategory');
         Route::post('/update/subcategory/{id}', 'UpdateSubCategory')->name('update.subcategory');
         Route::get('/delete/subcategory/{id}', 'DeleteSubCategory')->name('delete.subcategory');
+    });
+
+    Route::controller(AdminManageController::class)->group(function(){
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
     });
 });
 
