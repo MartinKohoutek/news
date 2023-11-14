@@ -29,8 +29,8 @@
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="col-md-6 form-group">
-                            <label for="username" class="form-label">Category</label>
-                            <select class="form-select mb-3" name="category_id" aria-label="Default select example">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select mb-3" name="category_id" aria-label="category" id="category">
                                 <option selected="" disabled>Choose Category...</option>
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -38,8 +38,8 @@
                             </select>
                         </div>
                         <div class="col-md-6 form-group">
-                            <label for="username" class="form-label">SubCategory</label>
-                            <select class="form-select mb-3" name="subcategory_id" aria-label="Default select example">
+                            <label for="subcategory" class="form-label">SubCategory</label>
+                            <select class="form-select mb-3" name="subcategory_id" aria-label="subcategory" id="subcategory">
                                 <option></option>
                             </select>
                         </div>
@@ -60,11 +60,10 @@
                             <textarea name="news_details" cols="30" rows="3" id="tinymce"></textarea>
                         </div>
                         <div class="col-12 form-group mb-3">
-                            <label class="form-label">Tags</label>
-                            <input type="text" class="form-control" data-role="tagsinput" value="World News, Sport">
+                            <label class="form-label" for="tags">Tags</label>
+                            <input type="text" class="form-control" data-role="tagsinput" value="World News, Sport" id="tags">
                         </div>
                         <div class="row mt-3">
-
                             <div class="col-6 form-check">
                                 <input name="breaking_news" class="form-check-input" type="checkbox" value="1" id="check1">
                                 <label class="form-check-label" for="check1">Breaking News</label>
@@ -108,18 +107,14 @@
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-                username: { required: true, },
-                name: { required: true, },
-                email: { required: true, },
-                phone: { required: true, },
-                password: { required: true, },
+                category_id: { required: true, },
+                news_title: { required: true, },
+                image: { required: true, },
             },
             messages: {
-                username: { required: 'Please Enter User Name', },
-                name: { required: 'Please Enter Name', },
-                email: { required: 'Please Enter Email', },
-                phone: { required: 'Please Phone', },
-                password: { required: 'Please Enter Password', },
+                category_id: { required: 'Please Choose Category', },
+                news_title: { required: 'Please Enter News Title', },
+                image: { required: 'Please Choose Image', },
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {
