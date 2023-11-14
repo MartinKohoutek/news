@@ -25,7 +25,7 @@
                         </div>
                         <h5 class="mb-0 text-primary">Add News Post</h5>
                     </div>
-                    <form action="{{ route('store.admin') }}" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('store.news.post') }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="col-md-6 form-group">
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-12 form-group mb-3">
                             <label class="form-label" for="tags">Tags</label>
-                            <input type="text" class="form-control" data-role="tagsinput" value="World News, Sport" id="tags">
+                            <input type="text" name="tags" class="form-control" data-role="tagsinput" value="World News, Sport" id="tags">
                         </div>
                         <div class="row mt-3">
                             <div class="col-6 form-check">

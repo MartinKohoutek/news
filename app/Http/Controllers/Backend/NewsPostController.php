@@ -8,6 +8,8 @@ use App\Models\NewsPost;
 use App\Models\Subcategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Intervention\Image\Facades\Image;
 
 class NewsPostController extends Controller
 {
@@ -26,5 +28,37 @@ class NewsPostController extends Controller
     public function GetSubCategory($id) {
         $subcategories = Subcategory::where('category_id', $id)->orderBy('subcategory_name')->get();
         return json_encode($subcategories);
+    }
+
+    public function StoreNewsPost(Request $request) {
+        $image = $request->file('image');
+        $imgName = hexdec(uniqid()).$image->getClientOriginalExtension();
+        $imgUrl = 'upload/news/'.$imgName;
+        Image::make($image)->resize(720, 450)->save($imgUrl);
+
+        NewsPost::insert([
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'user_id' => $request->user_id,
+            'news_title' => $request->news_title,
+            'news_title_slug' => strtolower(str_replace(' ', '-', $request->news_title)),
+            'image' => $imgUrl,
+            'news_details' => $request->news_details,
+            'tags' => $request->tags,
+            'breaking_news' => $request->breaking_news,
+            'top_slider' => $request->top_slider,
+            'first_section_three' => $request->first_section_three,
+            'first_section_nine' => $request->first_section_nine,
+            'post_date' => date('d-m-Y'),
+            'post_month' => date('F'),
+            'created_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'News Post Inserted Successfully!',
+        ];
+
+        return redirect()->route('all.news.post')->with($notification);
     }
 }

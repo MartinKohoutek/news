@@ -49,9 +49,9 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td><img src="{{ asset($item->image) }}" alt="" style="width: 40px; height: 40px"></td>
-                            <td>{{ $item->title }}</td>
-                            <td>{{ $item->category }}</td>
-                            <td>{{ $item->user }}</td>
+                            <td>{{ Str::limit($item->news_title, 40) }}</td>
+                            <td>{{ $item['category']['category_name'] }}</td>
+                            <td>{{ $item['user']['name'] }}</td>
                             <td>{{ Carbon\Carbon::parse($item->post_date)->diffForHumans() }}</td>
                             <td>
                                 <div class="form-check form-switch">
