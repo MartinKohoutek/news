@@ -47,13 +47,13 @@
                             <label for="news_title" class="form-label">News Title</label>
                             <input type="text" name="news_title" class="form-control" id="news_title">
                         </div>
-                        <div class="col-12 form-group">
+                        <div class="col-6 form-group">
                             <label for="image" class="form-label">Image</label>
                             <input type="file" name="image" class="form-control" id="image">
                         </div>
-                        <div class="col-12 form-group">
+                        <div class="col-6 form-group">
                             <label for="showImage" class="form-label"></label>
-                            <img src="{{ url('upload/no_image.jpg') }}" alt="" id="showImage" style="width: 120px; height: 80px;">
+                            <img class="border" src="{{ url('upload/no_image.jpg') }}" alt="" id="showImage" style="width: 120px; height: 80px;">
                         </div>
                         <div class="col-12 form-group">
                             <label for="tinymce" class="form-label">News Details</label>
