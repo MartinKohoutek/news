@@ -36,4 +36,38 @@ class AdminManageController extends Controller
 
         return redirect()->route('all.admin')->with($notification);
     }
+
+    public function EditAdmin($id) {
+        $user = User::find($id);
+        return view('backend.admin.edit_admin', compact('user'));
+    }
+
+    public function UpdateAdmin(Request $request, $id) {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = 'admin';
+        $user->status = 'inactive';
+        $user->save();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Admin User Updated Successfully!',
+        ];
+
+        return redirect()->route('all.admin')->with($notification);
+    }
+
+    public function DeleteAdmin($id) {
+        User::find($id)->delete();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Admin User Deleted Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

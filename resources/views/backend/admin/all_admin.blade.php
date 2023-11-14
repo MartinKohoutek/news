@@ -16,7 +16,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Admin Users</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Admin Users <span class="badge bg-primary">{{ count($users) }}</span></li>
                 </ol>
             </nav>
         </div>
@@ -56,8 +56,8 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="{{ route('edit.category', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
-                                <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
+                                <a href="{{ route('edit.admin', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
+                                <a href="{{ route('delete.admin', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
                             </td>
                         </tr>
                         @endforeach
