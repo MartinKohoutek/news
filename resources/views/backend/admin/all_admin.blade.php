@@ -22,7 +22,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.category') }}" class="btn btn-primary">Add Admin</a>
+                <a href="{{ route('add.admin') }}" class="btn btn-primary">Add Admin</a>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                             <td>{{ $item->phone }}</td>
                             <td>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" style="transform: scale(2); margin-left: 0" {{ $item->status == 'active' ? 'checked' : ''}} />
+                                    <input class="form-check-input d-block mx-auto" type="checkbox" id="flexSwitchCheckDefault" style="transform: scale(2);" {{ $item->status == 'active' ? 'checked' : ''}} />
                                 </div>
                             </td>
                             <td>
