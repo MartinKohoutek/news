@@ -1,3 +1,7 @@
+@php
+    $user = \App\Models\User::find(Auth::user()->id);
+@endphp
+
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
@@ -18,6 +22,8 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+
+        @if ($user->status == 'active')
         <li class="menu-label">Menu</li>
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -139,6 +145,7 @@
                 <div class="menu-title">Support</div>
             </a>
         </li>
+        @endif
     </ul>
     <!--end navigation-->
 </div>

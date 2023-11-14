@@ -1,6 +1,14 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+
+@php
+    $user = \App\Models\User::find(Auth::user()->id);
+@endphp
 <div class="page-content">
+    @if ($user->status == 'inactive')
+        <h4>Admin Account is <span class="text-danger">InActive</span></h4>
+        <p class="text-danger"><b>Please wait, admin will approve your Account</b></p>
+    @endif
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
         <div class="col">
             <div class="card rounded-4 bg-gradient-worldcup">

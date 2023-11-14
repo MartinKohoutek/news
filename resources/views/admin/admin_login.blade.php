@@ -45,11 +45,17 @@
                                             @csrf
                                             <div class="col-12">
                                                 <label for="email" class="form-label">Email Address</label>
-                                                <input type="email" name="email" class="form-control rounded-5" id="email" placeholder="Email Address">
+                                                <input type="email" name="email" class="form-control rounded-5 @error('email') is-invalid @enderror" id="email" placeholder="Email Address">
+                                                @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                             <div class="col-12">
-
-                                                <input type="password" name="password" class="form-control rounded-5" id="password" placeholder="Enter Password">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" name="password" class="form-control rounded-5 @error('password') is-invalid @enderror" id="password" placeholder="Enter Password">
+                                                @error('password')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-check form-switch">
