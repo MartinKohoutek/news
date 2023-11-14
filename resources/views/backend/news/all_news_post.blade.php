@@ -59,7 +59,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="{{ route('edit.admin', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
+                                <a href="{{ route('edit.news.post', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
                                 <a href="{{ route('delete.admin', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
                             </td>
                         </tr>
