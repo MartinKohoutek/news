@@ -27,8 +27,10 @@
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
 
+	<link href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 	<link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+	<script src="https://cdn.tiny.cloud/1/i1sr52wto9c0w6rx51se5ohgpmvtyf14twa9tru9i2mur9lv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 	<title>Admin Dashboard</title>
 </head>
 
@@ -74,10 +76,11 @@
 	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 	<script>
 		$(document).ready(function() {
 			$('#example').DataTable();
-		  } );
+		});
 	</script>
 
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
@@ -102,6 +105,14 @@
 		}
 	</script>
 	@endif
+
+	<script>
+		tinymce.init({
+			selector: 'textarea#tinymce',
+			plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+			toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+		});
+	</script>
 </body>
 
 </html>

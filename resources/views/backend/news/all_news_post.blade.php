@@ -23,7 +23,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.admin') }}" class="btn btn-primary">Add News Post</a>
+                <a href="{{ route('add.news.post') }}" class="btn btn-primary">Add News Post</a>
             </div>
         </div>
     </div>

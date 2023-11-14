@@ -91,6 +91,9 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::controller(NewsPostController::class)->group(function(){
         Route::get('/all/news/post', 'AllNewsPost')->name('all.news.post');
+        Route::get('/add/news/post', 'AddNewsPost')->name('add.news.post');
+
+        Route::get('/subcategory/ajax/{id}', 'GetSubCategory');
     });
 });
 

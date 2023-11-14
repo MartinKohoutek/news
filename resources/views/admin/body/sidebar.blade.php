@@ -60,7 +60,7 @@
             <ul>
                 <li> <a href="{{ route('all.news.post') }}"><i class="bx bx-right-arrow-alt"></i>All News Posts</a>
                 </li>
-                <li> <a href="ecommerce-products-details.html"><i class="bx bx-right-arrow-alt"></i>Add News Post</a>
+                <li> <a href="{{ route('add.news.post') }}"><i class="bx bx-right-arrow-alt"></i>Add News Post</a>
                 </li>
             </ul>
         </li>
