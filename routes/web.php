@@ -98,6 +98,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/delete/news/post/{id}', 'DeleteNewsPost')->name('delete.news.post');
 
         Route::get('/subcategory/ajax/{id}', 'GetSubCategory');
+        Route::post('/change/post/status', 'ChangePostStatus')->name('change.post.status');
     });
 });
 

@@ -120,4 +120,16 @@ class NewsPostController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function ChangePostStatus(Request $request) {
+        $is_checked = $request->input('is_checked', 0);
+
+        $post = NewsPost::find($request->input('post_id'));
+        if ($post) {
+            $post->status = $is_checked;
+            $post->save();
+        }
+
+        return response()->json(['message' => 'News Post Status Updated Successfully!']);
+    }
 }

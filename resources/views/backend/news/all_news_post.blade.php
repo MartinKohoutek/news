@@ -54,8 +54,8 @@
                             <td>{{ $item['user']['name'] }}</td>
                             <td>{{ Carbon\Carbon::parse($item->post_date)->diffForHumans() }}</td>
                             <td>
-                                <div class="form-check form-switch">
-                                    <input class="form-check-input d-block mx-auto status-toggle" data-user-id="{{ $item->id }}" type="checkbox" title="Set User Account Active/Inactive" id="check{{ $item->id }}" style="transform: scale(2);" {{ $item->status == 1 ? 'checked' : ''}} />
+                                <div class="form-check form-switch" style="padding-left: 21px;">
+                                    <input class="form-check-input d-block mx-auto status-toggle" data-post-id="{{ $item->id }}" type="checkbox" title="Set Post Active/Inactive" id="check{{ $item->id }}" style="transform: scale(2);" {{ $item->status == 1 ? 'checked' : ''}} />
                                 </div>
                             </td>
                             <td>
@@ -85,15 +85,16 @@
 <script>
     $(document).ready(function(){
         $('.status-toggle').on('change', function(){
-            var user_id = $(this).data('user-id');
+            var post_id = $(this).data('post-id');
             var is_checked = $(this).is(':checked');
+            console.log(post_id, is_checked);
 
             $.ajax({
-               url: "{{ route('change.admin.status') }}",
+               url: "{{ route('change.post.status') }}",
                method: "post",
                data: {
-                 user_id: user_id,
-                 is_checked: is_checked ? 'active' : 'inactive',
+                 post_id: post_id,
+                 is_checked: is_checked ? 1 : 0,
                  _token: "{{ csrf_token() }}",
                },
                success: function(response) {
