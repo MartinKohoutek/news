@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminManageController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\UserController;
@@ -86,6 +87,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
 
         Route::post('/change/admin/status', 'ChangeAdminStatus')->name('change.admin.status');
+    });
+
+    Route::controller(NewsPostController::class)->group(function(){
+        Route::get('/all/news/post', 'AllNewsPost')->name('all.news.post');
     });
 });
 
