@@ -25,7 +25,7 @@
                         </div>
                         <h5 class="mb-0 text-primary">Edit News Post</h5>
                     </div>
-                    <form action="{{ route('store.news.post') }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
+                    <form action="{{ route('update.news.post', $newspost->id) }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                         <div class="col-md-6 form-group">
@@ -97,12 +97,12 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#image').change(function() {
+        $('#image').change(function(e) {
             var reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function(e) {
                 $('#showImage').attr('src', e.target.result);
             }
-            reader.readAsDataURL(e.target.filed['0']);
+            reader.readAsDataURL(e.target.files['0']);
         });
     });
 </script>
@@ -112,12 +112,10 @@
             rules: {
                 category_id: { required: true, },
                 news_title: { required: true, },
-                image: { required: true, },
             },
             messages: {
                 category_id: { required: 'Please Choose Category', },
                 news_title: { required: 'Please Enter News Title', },
-                image: { required: 'Please Choose Image', },
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {

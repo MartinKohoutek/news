@@ -94,12 +94,12 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#image').change(function() {
+        $('#image').change(function(e) {
             var reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function(e) {
                 $('#showImage').attr('src', e.target.result);
             }
-            reader.readAsDataURL(e.target.filed['0']);
+            reader.readAsDataURL(e.target.files['0']);
         });
     });
 </script>

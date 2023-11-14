@@ -68,4 +68,40 @@ class NewsPostController extends Controller
         $subcategories = Subcategory::where('category_id', $newspost->category_id)->latest()->get();
         return view('backend.news.edit_news_post', compact('newspost', 'categories', 'subcategories'));
     }
+
+    public function UpdateNewsPost(Request $request, $id) {
+        $newspost = NewsPost::find($id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            unlink($newspost->image);
+            $imgName = hexdec(uniqid()).$image->getClientOriginalExtension();
+            $imgUrl = 'upload/news/'.$imgName;
+            Image::make($image)->resize(720, 450)->save($imgUrl);
+            $newspost->update(['image' => $imgUrl]);
+        }
+            
+        $newspost->update([
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'news_title' => $request->news_title,
+            'news_title_slug' => strtolower(str_replace(' ', '-', $request->news_title)),
+            'news_details' => $request->news_details,
+            'tags' => $request->tags,
+            'breaking_news' => $request->breaking_news,
+            'top_slider' => $request->top_slider,
+            'first_section_three' => $request->first_section_three,
+            'first_section_nine' => $request->first_section_nine,
+            'post_date' => date('d-m-Y'),
+            'post_month' => date('F'),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'News Post Updated Successfully!',
+        ];
+
+        return redirect()->route('all.news.post')->with($notification);
+    }
 }
