@@ -70,4 +70,17 @@ class AdminManageController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function ChangeAdminStatus(Request $request) {
+        $user_id = $request->input('user_id');
+        $is_checked = $request->input('is_checked', 'inactive');
+
+        $user = User::find($user_id);
+        if ($user) {
+            $user->status = $is_checked == 'active' ? 'active' : 'inactive';
+            $user->save();
+        }
+
+        return response()->json(['message' => 'Admin Status Updated Successfully!'.$is_checked]);
+    }
 }

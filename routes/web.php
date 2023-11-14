@@ -84,8 +84,11 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
         Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
         Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+
+        Route::post('/change/admin/status', 'ChangeAdminStatus')->name('change.admin.status');
     });
 });
+
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 

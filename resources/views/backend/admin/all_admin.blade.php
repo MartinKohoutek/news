@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <style>
     .form-check-input:checked {
         color: #fff;
@@ -52,7 +53,7 @@
                             <td>{{ $item->phone }}</td>
                             <td>
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input d-block mx-auto" type="checkbox" id="flexSwitchCheckDefault" style="transform: scale(2);" {{ $item->status == 'active' ? 'checked' : ''}} />
+                                    <input class="form-check-input d-block mx-auto status-toggle" data-user-id="{{ $item->id }}" type="checkbox" title="Set User Account Active/Inactive" id="flexSwitchCheckDefault" style="transform: scale(2);" {{ $item->status == 'active' ? 'checked' : ''}} />
                                 </div>
                             </td>
                             <td>
@@ -78,4 +79,30 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('.status-toggle').on('change', function(){
+            var user_id = $(this).data('user-id');
+            var is_checked = $(this).is(':checked');
+            
+            console.log(user_id, is_checked);
+
+            $.ajax({
+               url: "{{ route('change.admin.status') }}",
+               method: "post",
+               data: {
+                 user_id: user_id,
+                 is_checked: is_checked ? 'active' : 'inactive',
+                 _token: "{{ csrf_token() }}",
+               },
+               success: function(response) {
+                 toastr.success(response.message);
+               },
+               error: function(e) {
+                 console.log(e);
+               }
+            });
+        });
+    });
+</script>
 @endsection
