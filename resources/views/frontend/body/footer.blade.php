@@ -26,7 +26,7 @@
                         <ul class="small-posts">
                             <li>
                                 <a href="single-post.html">
-                                    <img src="upload/blog/th3.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <div class="post-cont">
                                     <h2><a href="single-post.html">New alternatives are more productive</a></h2>
@@ -37,7 +37,7 @@
                             </li>
                             <li>
                                 <a href="single-post.html">
-                                    <img src="upload/blog/th4.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <div class="post-cont">
                                     <h2><a href="single-post.html">Vue js new javascript Framework</a></h2>
@@ -48,7 +48,7 @@
                             </li>
                             <li>
                                 <a href="single-post.html">
-                                    <img src="upload/blog/th5.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <div class="post-cont">
                                     <h2><a href="single-post.html">Eating traditional food is more healthy</a></h2>
@@ -67,7 +67,7 @@
                         <div class="news-post standart-post">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s15.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a href="#" class="category">Tennis</a>
                             </div>

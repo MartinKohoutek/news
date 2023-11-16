@@ -1,5 +1,8 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <header class="clearfix">
-
+    @php
+    $currentDate = new DateTime();
+    @endphp
     <div class="top-line">
         <div class="container">
             <div class="row">
@@ -15,7 +18,7 @@
                     </form>
                     <ul class="info-list right-align">
                         <li>
-                            <i class="fa fa-clock-o"></i>Monday 15.01.2018
+                            <i class="fa fa-clock-o"></i>{{ $currentDate->format('l d.m.Y') }}
                         </li>
                         @auth
                         <li>
@@ -24,7 +27,7 @@
                         <li>
                             <a href="{{ route('dashboard') }}"><i class="fa fa-user"></i>Dashboard</a>
                         </li>
-                        @else    
+                        @else
                         <li>
                             <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-user"></i>Log in</a>
                         </li>
@@ -49,248 +52,54 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
+                    @php
+                    $categories = \App\Models\Category::orderBy('category_name')->limit(10)->get();
+                    @endphp
+
+                    @foreach ($categories as $category)
                     <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Football<i class="fa fa-caret-down"></i></a>
+                        <a class="nav-link" href="category1.html">{{ $category->category_name }}<i class="fa fa-caret-down"></i></a>
                         <div class="mega-posts-menu">
                             <div class="posts-line">
                                 <ul class="filter-list">
-                                    <li><a href="#">All</a></li>
-                                    <li><a href="#">La liga</a></li>
-                                    <li><a href="#">Bundesliga</a></li>
-                                    <li><a href="#">Premier League</a></li>
-                                    <li><a href="#">Serie A</a></li>
+                                    <li id="cat_{{ $category->id }}"><span>All</span></li>
+                                    @php
+                                    $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name')->limit(7)->get();
+                                    @endphp
+                                    @foreach ($subcategories as $subcategory)
+                                    <li id="subcat_{{ $subcategory->id }}"><span href="">{{ $subcategory->subcategory_name }}</span></li>
+                                    @endforeach
                                 </ul>
-                                <div class="row">
+                                <div class="row subcategory_posts" id="{{ $category->id }}">
+                                    @php
+                                    $newposts = \App\Models\NewsPost::where('category_id', $category->id)->latest()->limit(4)->get();
+                                    @endphp
+                                    @foreach ($newposts as $post)
                                     <div class="col-lg-3 col-md-6">
                                         <div class="news-post standart-post">
                                             <div class="post-image">
                                                 <a href="single-post">
-                                                    <img src="upload/blog/s1.jpg" alt="">
+                                                    <img src="{{ asset($post->image) }}" alt="">
                                                 </a>
-                                                <a href="#" class="category">Football</a>
+                                                @if ($post->subcategory_id)
+                                                <a href="#" class="category">{{ $post['subcategory']['subcategory_name'] }}</a>
+                                                @else
+                                                <a href="#" class="category">{{ $post['category']['category_name'] }}</a>
+                                                @endif
                                             </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
+                                            <h2><a href="single-post.html">{{ $post->news_title }}</a></h2>
                                             <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
+                                                <li><i class="lnr lnr-user"></i>by <a href="#">{{ $post['user']['name'] }}</a></li>
                                                 <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s2.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Football</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s24.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Football</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s25.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Football</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Basketball<i class="fa fa-caret-down"></i></a>
-                        <div class="mega-posts-menu">
-                            <div class="posts-line">
-                                <ul class="filter-list">
-                                    <li><a href="#">All</a></li>
-                                    <li><a href="#">NBA</a></li>
-                                    <li><a href="#">Europa League</a></li>
-                                    <li><a href="#">Street Ball</a></li>
-                                    <li><a href="#">Spain</a></li>
-                                </ul>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s4.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Basketball</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s14.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Basketball</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s16.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Basketball</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s19.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Basketball</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Winter Sports<i class="fa fa-caret-down"></i></a>
-                        <div class="mega-posts-menu">
-                            <div class="posts-line">
-                                <ul class="filter-list">
-                                    <li><a href="#">All</a></li>
-                                    <li><a href="#">Ski Alpine</a></li>
-                                    <li><a href="#">Ski Jumping</a></li>
-                                    <li><a href="#">Biathlon</a></li>
-                                </ul>
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s20.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Winter Sports</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s22.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Winter Sports</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s23.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Winter Sports</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="news-post standart-post">
-                                            <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="upload/blog/s26.jpg" alt="">
-                                                </a>
-                                                <a href="#" class="category">Winter Sports</a>
-                                            </div>
-                                            <h2><a href="single-post.html">New alternatives are more</a></h2>
-                                            <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Athletics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Teniss</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Handball</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Rugby</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="category1.html">Teniss</a>
-                    </li>
+                    @endforeach
                     <li class="nav-item drop-link">
                         <a class="nav-link food" href="#">Pages<i class="fa fa-caret-down"></i></a>
                         <ul class="dropdown">
@@ -303,10 +112,102 @@
                             <li><a href="404-error.html">404 Error</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Archive</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
 </header>
+<script>
+    $(document).ready(function() {
+        $('li[id^="subcat_"]').on('click', function() {
 
+            var subcategory_id = $(this).attr('id');
+            subcategory_id = subcategory_id.replace('subcat_', '');
+            if (subcategory_id) {
+                $.ajax({
+                    url: "{{ url('/frontend/subcategory') }}" + '/' + subcategory_id,
+                    type: 'get',
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data[0].category_id);
+                        $('.subcategory_posts#' + data[0].category_id).html('');
+                        var d = $('.subcategory_posts#' + data[0].category_id).empty();
+
+                        $.each(data, function(key, value) {
+                            $('.subcategory_posts#' + data[0].category_id)
+                                .append(`<div class="col-lg-3 col-md-6">
+                                        <div class="news-post standart-post">
+                                            <div class="post-image">
+                                                <a href="single-post">
+                                                    <img src="${value.image}" alt="">
+                                                </a>
+                                                <a href="#" class="category">${value.subcategory.subcategory_name}</a>
+                                            </div>
+                                            <h2><a href="single-post.html">${value.news_title}</a></h2>
+                                            <ul class="post-tags">
+                                                <li><i class="lnr lnr-user"></i>by <a href="#">${value.user.name}</a></li>
+                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                `);
+                        });
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            } else {
+                alert('danger');
+            }
+        });
+
+        $('li[id^="cat_"]').on('click', function() {
+            var category_id = $(this).attr('id');
+            category_id = category_id.replace('cat_', '');
+            if (category_id) {
+                $.ajax({
+                    url: "{{ url('/frontend/category') }}" + '/' + category_id,
+                    type: 'get',
+                    async: true,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data);
+                        $('.subcategory_posts#' + category_id).html('');
+                        var d = $('.subcategory_posts#' + category_id).empty();
+
+                        $.each(data, function(key, value) {
+                            
+                            $('.subcategory_posts#' + category_id)
+                                .append(`<div class="col-lg-3 col-md-6">
+                            <div class="news-post standart-post">
+                                <div class="post-image">
+                                    <a href="single-post">
+                                        <img src="${value.image}" alt="">
+                                    </a>
+                                    <a href="#" class="category">${value?.subcategory?.subcategory_name == undefined ? value.category.category_name : value.subcategory.subcategory_name}</a>
+                                </div>
+                                <h2><a href="single-post.html">${value.news_title}</a></h2>
+                                <ul class="post-tags">
+                                    <li><i class="lnr lnr-user"></i>by <a href="#">${value.user.name}</a></li>
+                                    <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    `);
+                        });
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+</script>

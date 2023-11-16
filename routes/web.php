@@ -102,6 +102,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     });
 });
 
+Route::controller(NewsPostController::class)->group(function(){
+    Route::get('/frontend/subcategory/{id}', 'GetSubCategoryPosts');
+    Route::get('/frontend/category/{id}', 'GetCategoryPosts');
+});
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 

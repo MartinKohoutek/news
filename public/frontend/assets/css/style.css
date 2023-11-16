@@ -260,14 +260,17 @@ header.active .top-line {
       margin-bottom: 3px;
       margin-right: 3px;
       float: left; }
-      .mega-posts-menu ul.filter-list li a {
+      .mega-posts-menu ul.filter-list li span {
         padding: 6px 15px;
         color: #ccc;
         font-size: 12px;
         font-family: "Roboto Condensed", sans-serif;
         text-transform: uppercase;
-        border: 1px solid #333333; }
-      .mega-posts-menu ul.filter-list li a:hover {
+        border: 1px solid #333333; 
+		cursor: pointer;
+		display: inline-block;
+		}
+      .mega-posts-menu ul.filter-list li span:hover {
         background: #ff7e00;
         border: 1px solid transparent;
         color: #fff; }

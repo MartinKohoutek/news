@@ -4,7 +4,7 @@
 @include('frontend.body.heading_news')
 <!-- Advertisement -->
 <div class="advertisement">
-    <a href="#"><img src="upload/addsense/620x80grey.jpg" alt=""></a>
+    <a href="#"><img src="{{ asset('upload/news/1782565735848410jpg') }}" alt=""></a>
 </div>
 <!-- End Advertisement -->
 
@@ -21,7 +21,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s2.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Football</a>
                         </div>
@@ -37,7 +37,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s8.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Baseball</a>
                         </div>
@@ -55,7 +55,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s13.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Extreme Sports</a>
                         </div>
@@ -71,7 +71,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s14.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Basketball</a>
                         </div>
@@ -89,7 +89,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s18.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Rugby</a>
                         </div>
@@ -105,7 +105,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s26.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Skiing</a>
                         </div>
@@ -134,7 +134,7 @@
                         <div class="news-post standart-post">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s24.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a href="#" class="category">football</a>
                             </div>
@@ -146,7 +146,7 @@
                         <div class="news-post standart-post">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s25.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a href="#" class="category">football</a>
                             </div>
@@ -158,7 +158,7 @@
                         <div class="news-post standart-post">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s26.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a href="#" class="category">winter sports</a>
                             </div>
@@ -170,7 +170,7 @@
                         <div class="news-post standart-post">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s20.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a href="#" class="category">winter sports</a>
                             </div>
@@ -182,7 +182,7 @@
                         <div class="news-post standart-post">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s19.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a href="#" class="category">Basketball</a>
                             </div>
@@ -198,7 +198,7 @@
 
         <!-- Advertisement -->
         <div class="advertisement">
-            <a href="#"><img src="upload/addsense/620x80grey.jpg" alt=""></a>
+            <a href="#"><img src="" alt=""></a>
         </div>
         <!-- End Advertisement -->
 
@@ -212,7 +212,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s2.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Football</a>
                         </div>
@@ -223,7 +223,7 @@
                     <ul class="small-posts">
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th1.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
@@ -234,7 +234,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th2.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -245,7 +245,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th3.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -263,7 +263,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s16.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Basketball</a>
                         </div>
@@ -274,7 +274,7 @@
                     <ul class="small-posts">
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th4.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -285,7 +285,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th5.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -296,7 +296,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th6.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">Philip Dunne, sacked after his NHS remarks, must now face his constituents</a></h2>
@@ -322,7 +322,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s15.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Tennis</a>
                         </div>
@@ -333,7 +333,7 @@
                     <ul class="small-posts">
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th7.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
@@ -344,7 +344,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th8.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -355,7 +355,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th9.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -373,7 +373,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s23.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Winter sports</a>
                         </div>
@@ -384,7 +384,7 @@
                     <ul class="small-posts">
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th10.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
@@ -395,7 +395,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th2.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -406,7 +406,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th4.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -432,7 +432,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s12.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Baseball</a>
                         </div>
@@ -443,7 +443,7 @@
                     <ul class="small-posts">
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th1.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
@@ -454,7 +454,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th2.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -465,7 +465,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th3.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -483,7 +483,7 @@
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="upload/blog/s10.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <a href="#" class="category">Extreme</a>
                         </div>
@@ -494,7 +494,7 @@
                     <ul class="small-posts">
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th5.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
@@ -505,7 +505,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th7.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -516,7 +516,7 @@
                         </li>
                         <li>
                             <a href="single-post.html">
-                                <img src="upload/blog/th9.jpg" alt="">
+                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                             </a>
                             <div class="post-cont">
                                 <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -534,7 +534,7 @@
 
         <!-- Advertisement -->
         <div class="advertisement">
-            <a href="#"><img src="upload/addsense/620x80grey.jpg" alt=""></a>
+            <a href="#"><img src="{{ asset('upload/news/1782565735848410jpg') }}" alt=""></a>
         </div>
         <!-- End Advertisement -->
 
@@ -550,7 +550,7 @@
                         <div class="col-sm-5">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s3.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a class="category" href="#">Athletic</a>
                             </div>
@@ -572,7 +572,7 @@
                         <div class="col-sm-5">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s4.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a class="category" href="#">Basketball</a>
                             </div>
@@ -594,7 +594,7 @@
                         <div class="col-sm-5">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s5.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a class="category" href="#">Bicycle</a>
                             </div>
@@ -616,7 +616,7 @@
                         <div class="col-sm-5">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s6.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a class="category" href="#">Tennis</a>
                             </div>
@@ -638,7 +638,7 @@
                         <div class="col-sm-5">
                             <div class="post-image">
                                 <a href="single-post">
-                                    <img src="upload/blog/s7.jpg" alt="">
+                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                                 </a>
                                 <a class="category" href="#">Winter Sports</a>
                             </div>
@@ -712,7 +712,7 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li>
-                            <img alt="" src="upload/blog/s23.jpg" />
+                            <img alt="" src="{{ asset('upload/news/1782565735848410jpg') }}" />
                             <div class="slider-caption">
                                 <a href="#" class="category">Winter sports</a>
                                 <h2><a href="single-post.html">Ski Alpine final in Austria</a></h2>
@@ -723,7 +723,7 @@
                             </div>
                         </li>
                         <li>
-                            <img alt="" src="upload/blog/s24.jpg" />
+                            <img alt="" src="{{ asset('upload/news/1782565735848410jpg') }}" />
                             <div class="slider-caption">
                                 <a href="#" class="category">Football</a>
                                 <h2><a href="single-post.html">World Cup in Germany</a></h2>
@@ -734,7 +734,7 @@
                             </div>
                         </li>
                         <li>
-                            <img alt="" src="upload/blog/s25.jpg" />
+                            <img alt="" src="{{ asset('upload/news/1782565735848410jpg') }}" />
                             <div class="slider-caption">
                                 <a href="#" class="category">Football</a>
                                 <h2><a href="single-post.html">El classico in Nou Camp</a></h2>
@@ -750,7 +750,7 @@
                 <ul class="small-posts">
                     <li>
                         <a href="single-post.html">
-                            <img src="upload/blog/th5.jpg" alt="">
+                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                         </a>
                         <div class="post-cont">
                             <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
@@ -761,7 +761,7 @@
                     </li>
                     <li>
                         <a href="single-post.html">
-                            <img src="upload/blog/th7.jpg" alt="">
+                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                         </a>
                         <div class="post-cont">
                             <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
@@ -772,7 +772,7 @@
                     </li>
                     <li>
                         <a href="single-post.html">
-                            <img src="upload/blog/th9.jpg" alt="">
+                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
                         </a>
                         <div class="post-cont">
                             <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
@@ -785,7 +785,7 @@
             </div>
 
             <div class="advertisement">
-                <a href="#"><img src="upload/addsense/300x250.jpg" alt=""></a>
+                <a href="#"><img src="{{ asset('upload/news/1782565735848410jpg') }}" alt=""></a>
             </div>
 
             <div class="widget tags-widget">
