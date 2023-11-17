@@ -11,7 +11,7 @@
                 <ul class="post-tags">
                     <li><i class="lnr lnr-user"></i>by <a href="#">{{ $news->user->name }}</a></li>
                     <li><a href="#"><i class="lnr lnr-book"></i><span>20 comments</span></a></li>
-                    <li><i class="lnr lnr-eye"></i>872 Views</li>
+                    <li><i class="lnr lnr-eye"></i>{{ $news->view_count }} View{{ $news->view_count == 1 ? '' : 's' }}</li>
                     <li><i class="lnr lnr-history"></i>{{ $news->created_at->format('l d.m.Y') }}</li>
                 </ul>
                 <div class="share-post-box">
