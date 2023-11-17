@@ -11,7 +11,7 @@
 	padding: 9px 20px 9px 10px;
 	font-size: 18px;
 	color: #fff;
-	background-color: #19232D;
+	background-color: #212121;
 	font-weight: 400;
 
 
@@ -24,7 +24,7 @@
 	content: "";
 	width: 0;
 	height: 0;
-	border-left: 20px solid #19232D;
+	border-left: 20px solid #212121;
 	border-top: 20px solid transparent;
 	border-bottom: 20px solid transparent;
 }
@@ -33,14 +33,14 @@
 	position: relative;
 	height: 40px;
 	width: 100%;
-	background: #F1FCFF;
+	background: #343a40;
 	color: #000000;	
 	line-height: 40px;
 }
 
 .scroll5-right a {
 	font-size: 18px;
-	color: #000000;	
+	color: white;	
 	font-weight: 400;
 	margin-right: 12px;
 	display: inline-block;
@@ -88,7 +88,7 @@
         float: right;
         width: 59px;
         height: 40px;
-        background: #19232d;
+        background: #212121;
         color: #fff;
         cursor: pointer
     }
@@ -100,7 +100,7 @@
         content: '';
         height: 0;
         width: 0;
-        border-bottom: 40px solid #19232d;
+        border-bottom: 40px solid #212121;
         border-left: 16px solid transparent;
         display: inline-block
     }
@@ -150,38 +150,14 @@
                                 <span> Breaking News :: </span>
                             </div>
                         </div>
+                        @php
+                            $breakingNews = \App\Models\NewsPost::where('status', 1)->where('breaking_news', 1)->limit(7)->latest()->get();
+                        @endphp
                         <div class="scroll5-right">
                             <marquee direction="left" scrollamount="5px" onmouseover="this.stop()" onmouseout="this.start()">
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
-                                <a href=" ">
-                                    <img src="assets/images/favicon.gif" alt="Logo" title="Logo" width="30px" height="auto">
-                                    Pakistan bring back Hayden for T20 </a>
+                                @foreach ($breakingNews as $news)
+                                <a href=" ">&#128312;{{ $news->news_title }}</a>
+                                @endforeach
                             </marquee>
                         </div>
                         <div class="scroolbar5">
