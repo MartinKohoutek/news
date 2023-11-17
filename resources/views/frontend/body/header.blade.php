@@ -57,6 +57,10 @@
                     @endphp
 
                     @foreach ($categories as $category)
+                    @php
+                        $newposts = \App\Models\NewsPost::where('category_id', $category->id)->latest()->limit(4)->get();
+                    @endphp
+                    @if (count($newposts) > 0)
                     <li class="nav-item">
                         <a class="nav-link" href="category1.html">{{ $category->category_name }}<i class="fa fa-caret-down"></i></a>
                         <div class="mega-posts-menu">
@@ -67,13 +71,12 @@
                                     $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name')->limit(7)->get();
                                     @endphp
                                     @foreach ($subcategories as $subcategory)
+                                    @if (count(App\Models\NewsPost::where('subcategory_id', $subcategory->id)->get()) > 0)
                                     <li id="subcat_{{ $subcategory->id }}"><span href="">{{ $subcategory->subcategory_name }}</span></li>
+                                    @endif
                                     @endforeach
                                 </ul>
                                 <div class="row subcategory_posts" id="{{ $category->id }}">
-                                    @php
-                                    $newposts = \App\Models\NewsPost::where('category_id', $category->id)->latest()->limit(4)->get();
-                                    @endphp
                                     @foreach ($newposts as $post)
                                     <div class="col-lg-3 col-md-6">
                                         <div class="news-post standart-post">
@@ -99,6 +102,7 @@
                             </div>
                         </div>
                     </li>
+                    @endif
                     @endforeach
                     <li class="nav-item drop-link">
                         <a class="nav-link food" href="#">Pages<i class="fa fa-caret-down"></i></a>
