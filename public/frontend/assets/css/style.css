@@ -2940,3 +2940,12 @@ footer {
     font-size: 20px; }
   .masonry-box .iso-call.colum-4 .news-post {
     width: 100%; } }
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}

@@ -13,45 +13,65 @@
 <div class="row">
     <div class="col-lg-8">
 
+        @php
+            $latestNews = App\Models\NewsPost::where('status', '1')->latest()->limit(6)->get();
+        @endphp
         <!-- Posts-block -->
         <div class="posts-block standard-box">
             <div class="title-section">
                 <h1>Latest News</h1>
             </div>
-            <div class="row">
+            <div class="row display-flex">
+                @foreach ($latestNews as $item)
+                @if ($loop->index < count($latestNews) / 2)
                 <div class="col-sm-6">
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                                <img src="{{ asset($item->image) }}" alt="">
                             </a>
-                            <a href="#" class="category">Football</a>
+                            @if ($item->subcategory_id != null)
+                            <a href="#" class="category">{{ $item['subcategory']['subcategory_name']}}</a>
+                            @else
+                            <a href="#" class="category">{{ $item['category']['category_name']}}</a>
+                            @endif
                         </div>
-                        <h2><a href="single-post.html">New alternatives are more productive</a></h2>
+                        <h2><a href="single-post.html">{{ $item->news_title }}</a></h2>
                         <ul class="post-tags">
-                            <li>by <a href="#">John Doe</a></li>
+                            <li>by <a href="#">{{ $item['user']['name'] }}</a></li>
                             <li><a href="#"><span>23 comments</span></a></li>
                         </ul>
-                        <p>Eight candidates are seeking to oust Zeman, whose inclination toward far-right groups and cosy relations with Russia and China have split public opinion.</p>
+                        <!-- <p>{!! Str::words($item->news_details, 30, ' ...') !!}</p> -->
                     </div>
                 </div>
+                @endif
+                @endforeach
+                @foreach ($latestNews as $item)
+                @if ($loop->index >= count($latestNews) / 2)
                 <div class="col-sm-6">
                     <div class="news-post standart-post">
                         <div class="post-image">
                             <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                                <img src="{{ asset($item->image) }}" alt="">
                             </a>
-                            <a href="#" class="category">Baseball</a>
+                            @if ($item->subcategory_id != null)
+                            <a href="#" class="category">{{ $item['subcategory']['subcategory_name']}}</a>
+                            @else
+                            <a href="#" class="category">{{ $item['category']['category_name']}}</a>
+                            @endif
                         </div>
-                        <h2><a href="single-post.html">First Man walking in moon</a></h2>
+                        <h2><a href="single-post.html">{{ $item->news_title }}</a></h2>
                         <ul class="post-tags">
-                            <li>by <a href="#">John Doe</a></li>
+                            <li>by <a href="#">{{ $item['user']['name'] }}</a></li>
                             <li><a href="#"><span>23 comments</span></a></li>
                         </ul>
-                        <p>Our research demonstrates that – despite a high level of activity – many measures have limited impact unless they are truly embedded in a comprehensive strategy. Download the full study to learn more.</p>
+                        <!-- <p>{!! Str::words($item->news_details, 30, ' ...') !!}</p> -->
                     </div>
                 </div>
+                @endif
+                @endforeach
             </div>
+           
             <div class="row">
                 <div class="col-sm-6">
                     <div class="news-post standart-post">

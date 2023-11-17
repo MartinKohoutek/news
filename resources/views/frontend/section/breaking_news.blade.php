@@ -127,7 +127,7 @@
     }
 
     .alert {
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         margin-top: 10px;
         padding: 0;
     }
