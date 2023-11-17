@@ -107,6 +107,10 @@ Route::controller(NewsPostController::class)->group(function(){
     Route::get('/frontend/category/{id}', 'GetCategoryPosts');
 });
 
+Route::controller(IndexController::class)->group(function(){
+    Route::get('/news/details/{id}/{slug}', 'NewsDetails');
+});
+
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 
 require __DIR__.'/auth.php';

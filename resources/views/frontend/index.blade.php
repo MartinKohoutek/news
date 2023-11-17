@@ -27,7 +27,7 @@
                 <div class="col-sm-6">
                     <div class="news-post standart-post">
                         <div class="post-image">
-                            <a href="single-post">
+                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">
                                 <img src="{{ asset($item->image) }}" alt="">
                             </a>
                             @if ($item->subcategory_id != null)
@@ -36,7 +36,7 @@
                             <a href="#" class="category">{{ $item['category']['category_name']}}</a>
                             @endif
                         </div>
-                        <h2><a href="single-post.html">{{ $item->news_title }}</a></h2>
+                        <h2><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                         <ul class="post-tags">
                             <li>by <a href="#">{{ $item['user']['name'] }}</a></li>
                             <li><a href="#"><span>23 comments</span></a></li>
