@@ -123,7 +123,6 @@
             </div>
         </div>
     </nav>
-
 </header>
 <script>
     $(document).ready(function() {

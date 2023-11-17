@@ -1,7 +1,9 @@
 @extends('frontend.home_master')
 @section('home')
 
+@include('frontend.section.breaking_news')
 @include('frontend.body.heading_news')
+
 <!-- Advertisement -->
 <div class="advertisement">
     <a href="#"><img src="{{ asset('upload/news/1782565735848410jpg') }}" alt=""></a>

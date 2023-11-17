@@ -24,7 +24,7 @@
 
         <!-- content-section 
 			================================================== -->
-        <section id="content-section">
+        <section id="content-section" style="padding-top: 10px;">
             <div class="container">
                 @yield('home')
             </div>
