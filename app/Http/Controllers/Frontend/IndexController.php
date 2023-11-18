@@ -39,13 +39,13 @@ class IndexController extends Controller
     }
 
     public function NewsCategory($id, $slug) {
-        $news = NewsPost::where('status', 1)->where('category_id', $id)->orderBy('id', 'DESC')->get();
+        $news = NewsPost::where('status', 1)->where('category_id', $id)->orderBy('id', 'DESC')->paginate(2);
         $cat = Category::where('id', $id)->first();
         return view('frontend.news.news_category', compact('news', 'cat'));
     }
 
     public function NewsSubCategory($id, $slug) {
-        $news = NewsPost::where('status', 1)->where('subcategory_id', $id)->orderBy('id', 'DESC')->get();
+        $news = NewsPost::where('status', 1)->where('subcategory_id', $id)->orderBy('id', 'DESC')->paginate(2);
         $subcat = Subcategory::where('id', $id)->first();
         return view('frontend.news.news_subcategory', compact('news', 'subcat'));
     }
