@@ -20,58 +20,48 @@
                     </div>
                 </div>
 
+                @php
+                $popularNews = App\Models\NewsPost::orderBy('view_count', 'DESC')->limit(3)->get();
+                @endphp
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget popular-widget">
                         <h1>Popular News</h1>
                         <ul class="small-posts">
-                            <li>
-                                <a href="single-post.html">
-                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            @foreach ($popularNews as $news)
+                            <li style="margin-bottom: 18px;">
+                                <a href="{{ url('news/details/'.$news->id.'/'.$news->news_title_slug) }}">
+                                    <img src="{{ asset($news->image) }}" alt="" style="height: 80px; object-fit:cover">
                                 </a>
                                 <div class="post-cont">
-                                    <h2><a href="single-post.html">New alternatives are more productive</a></h2>
-                                    <ul class="post-tags">
-                                        <li>by <a href="#">Author</a></li>
+                                    <h2><a href="{{ url('news/details/'.$news->id.'/'.$news->news_title_slug) }}">{{ $news->news_title }}</a></h2>
+                                    <ul class="post-tags" style="margin-bottom: 0;">
+                                        <li>by <a href="#">{{ $news->user->name }}</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li>
-                                <a href="single-post.html">
-                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                                </a>
-                                <div class="post-cont">
-                                    <h2><a href="single-post.html">Vue js new javascript Framework</a></h2>
-                                    <ul class="post-tags">
-                                        <li>by <a href="#">Besim Dauti</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="single-post.html">
-                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                                </a>
-                                <div class="post-cont">
-                                    <h2><a href="single-post.html">Eating traditional food is more healthy</a></h2>
-                                    <ul class="post-tags">
-                                        <li>by <a href="#">Admin Mag</a></li>
-                                    </ul>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
 
+                @php
+                    $featuredPost = App\Models\NewsPost::where('breaking_news', 1)->latest()->first();
+                @endphp
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget featured-widget">
                         <h1>Featured Post</h1>
                         <div class="news-post standart-post">
                             <div class="post-image">
-                                <a href="single-post">
-                                    <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                                <a href="{{ url('news/details/'.$news->id.'/'.$news->news_title_slug) }}">
+                                    <img src="{{ asset($featuredPost->image) }}" alt="">
                                 </a>
-                                <a href="#" class="category">Tennis</a>
+                                @if ($featuredPost->subcategory_id != null)
+                                <a href="#" class="category">{{ $featuredPost->subcategory->subcategory_name }}</a>
+                                @else
+                                <a href="#" class="category">{{ $featuredPost->category->category_name }}</a>
+                                @endif
                             </div>
-                            <h2><a href="single-post.html">Visiting antic countries is John Doe hobby.</a></h2>
+                            <h2><a href="{{ url('news/details/'.$news->id.'/'.$news->news_title_slug) }}">{{ $featuredPost->news_title }}</a></h2>
                         </div>
 
                     </div>
@@ -97,12 +87,12 @@
 
         <div class="down-footer">
             <ul class="list-footer">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="privacy-policy.html">Privacy policy</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <p>&copy; Copyright By Nunforest 2017<a href="#" class="go-top"><i class="fa fa-caret-up" aria-hidden="true"></i></a></p>
+            <p>&copy; Copyright By Martin Kohoutek 2022-<script>document.write(new Date().getFullYear())</script><a href="#" class="go-top"><i class="fa fa-caret-up" aria-hidden="true"></i></a></p>
         </div>
 
     </div>
