@@ -32,7 +32,7 @@ class NewsPostController extends Controller
 
     public function StoreNewsPost(Request $request) {
         $image = $request->file('image');
-        $imgName = hexdec(uniqid()).$image->getClientOriginalExtension();
+        $imgName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         $imgUrl = 'upload/news/'.$imgName;
         Image::make($image)->resize(720, 450)->save($imgUrl);
 
@@ -75,7 +75,7 @@ class NewsPostController extends Controller
         if ($request->file('image')) {
             $image = $request->file('image');
             unlink($newspost->image);
-            $imgName = hexdec(uniqid()).$image->getClientOriginalExtension();
+            $imgName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             $imgUrl = 'upload/news/'.$imgName;
             Image::make($image)->resize(720, 450)->save($imgUrl);
             $newspost->update(['image' => $imgUrl]);
