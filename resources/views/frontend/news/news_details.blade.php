@@ -80,13 +80,23 @@
                     <img alt="" src="{{ asset('upload/admin_images/'.$news->user->photo) }}">
                     <div class="author-content">
                         <h4>{{ $news->user->name }}<a href="#">{{ $countAuthorPosts }} posts</a></h4>
-                        <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam. </p>
+                        <p>{!! $news->user->description !!}</p>
                         <ul class="author-social">
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            @if ($news->user->facebook)
+                            <li><a href="{{ url($news->user->facebook) }}" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            @endif
+                            @if ($news->user->googleplus)
+                            <li><a href="{{ url($news->user->googleplus ) }}" class="google"><i class="fa fa-google-plus"></i></a></li>
+                            @endif
+                            @if ($news->user->twitter)
+                            <li><a href="{{ url($news->user->twitter) }}" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            @endif
+                            @if ($news->user->instagram)
+                            <li><a href="{{ url($news->user->instagram) }}" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                            @endif
+                            @if ($news->user->linkedin)
+                            <li><a href="{{ url($news->user->linkedin) }}" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
