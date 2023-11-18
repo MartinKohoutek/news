@@ -51,9 +51,12 @@
             </div>
             <!-- End single-post -->
 
+            @php
+                $banners = App\Models\Banner::find(1);
+            @endphp
             <!-- Advertisement -->
             <div class="advertisement">
-                <a href="#"><img src="upload/addsense/620x80grey.jpg" alt=""></a>
+                <a href="#"><img src="{{ asset($banners->news_details_one) }}" alt=""></a>
             </div>
             <!-- End Advertisement -->
 

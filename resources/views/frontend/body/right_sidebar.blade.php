@@ -79,8 +79,11 @@
             </ul>
         </div>
 
+        @php
+            $banners = App\Models\Banner::find(1);
+        @endphp
         <div class="advertisement">
-            <a href="#"><img src="upload/addsense/300x250.jpg" alt=""></a>
+            <a href="#"><img src="{{ asset($banners->right_sidebar) }}" alt=""></a>
         </div>
 
         <div class="widget tags-widget">
