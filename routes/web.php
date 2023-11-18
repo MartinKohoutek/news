@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminManageController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -99,6 +100,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
         Route::get('/subcategory/ajax/{id}', 'GetSubCategory');
         Route::post('/change/post/status', 'ChangePostStatus')->name('change.post.status');
+    });
+
+    Route::controller(BannerController::class)->group(function(){
+        Route::get('/all/banners', 'AllBanners')->name('all.banners');
     });
 });
 
