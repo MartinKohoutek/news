@@ -25,8 +25,9 @@
                         </div>
                         <h5 class="mb-0 text-primary">Edit Banners</h5>
                     </div>
-                    <form action="{{ route('update.category') }}" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('update.banners') }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $banners->id }}">
                         <div class="row mb-3 mt-3">
                             <div class="col-5 form-group">
                                 <label for="image1" class="form-label">Home Banner One (620px x 80px)</label>
@@ -34,7 +35,7 @@
                             </div>
                             <div class="col-7 form-group">
                                 <label for="showImage1" class="form-label"></label>
-                                <img class="border" src="{{ (!empty($banners->home_one)) ? url('upload/banners/'.$banners->home_one) : url('upload/no_image.jpg') }}" alt="" id="showImage1" style="width: 620px; height: 80px;">
+                                <img class="border" src="{{ (!empty($banners->home_one)) ? url($banners->home_one) : url('upload/no_image.jpg') }}" alt="" id="showImage1" style="width: 620px; height: 80px;">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -44,7 +45,7 @@
                             </div>
                             <div class="col-7 form-group">
                                 <label for="showImage2" class="form-label"></label>
-                                <img class="border" src="{{ (!empty($banners->home_two)) ? url('upload/banners/'.$banners->home_two) : url('upload/no_image.jpg') }}" alt="" id="showImage2" style="width: 620px; height: 80px;">
+                                <img class="border" src="{{ (!empty($banners->home_two)) ? url($banners->home_two) : url('upload/no_image.jpg') }}" alt="" id="showImage2" style="width: 620px; height: 80px;">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -54,27 +55,27 @@
                             </div>
                             <div class="col-7 form-group">
                                 <label for="showImage3" class="form-label"></label>
-                                <img class="border" src="{{ (!empty($banners->home_three)) ? url('upload/banners/'.$banners->home_three) : url('upload/no_image.jpg') }}" alt="" id="showImage3" style="width: 620px; height: 80px;">
+                                <img class="border" src="{{ (!empty($banners->home_three)) ? url($banners->home_three) : url('upload/no_image.jpg') }}" alt="" id="showImage3" style="width: 620px; height: 80px;">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-5 form-group">
                                 <label for="image5" class="form-label">Details Page Banner (620px x 80px)</label>
-                                <input type="file" name="home_details_one" class="form-control" id="image5">
+                                <input type="file" name="news_details_one" class="form-control" id="image5">
                             </div>
                             <div class="col-7 form-group">
                                 <label for="showImage5" class="form-label"></label>
-                                <img class="border" src="{{ (!empty($banners->news_details_one)) ? url('upload/banners/'.$banners->news_details_one) : url('upload/no_image.jpg') }}" alt="" id="showImage5" style="width: 620px; height: 80px;">
+                                <img class="border" src="{{ (!empty($banners->news_details_one)) ? url($banners->news_details_one) : url('upload/no_image.jpg') }}" alt="" id="showImage5" style="width: 620px; height: 80px;">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-5 form-group">
                                 <label for="image6" class="form-label">Category/SubCategory Banner (620px x 80px)</label>
-                                <input type="file" name="home_category_one" class="form-control" id="image6">
+                                <input type="file" name="news_category_one" class="form-control" id="image6">
                             </div>
                             <div class="col-7 form-group">
                                 <label for="showImage6" class="form-label"></label>
-                                <img class="border" src="{{ (!empty($banners->news_category_one)) ? url('upload/banners/'.$banners->news_category_one) : url('upload/no_image.jpg') }}" alt="" id="showImage6" style="width: 620px; height: 80px;">
+                                <img class="border" src="{{ (!empty($banners->news_category_one)) ? url($banners->news_category_one) : url('upload/no_image.jpg') }}" alt="" id="showImage6" style="width: 620px; height: 80px;">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -84,7 +85,7 @@
                             </div>
                             <div class="col-7 form-group">
                                 <label for="showImage4" class="form-label"></label>
-                                <img class="border" src="{{ (!empty($banners->right_sidebar)) ? url('upload/banners/'.$banners->right_sidebar) : url('upload/no_image.jpg') }}" alt="" id="showImage4" style="width: 300px; height: 250px;">
+                                <img class="border" src="{{ (!empty($banners->right_sidebar)) ? url($banners->right_sidebar) : url('upload/no_image.jpg') }}" alt="" id="showImage4" style="width: 300px; height: 250px;">
                             </div>
                         </div>
                         <div class="col-12">

@@ -104,6 +104,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::controller(BannerController::class)->group(function(){
         Route::get('/all/banners', 'AllBanners')->name('all.banners');
+        Route::post('/update/banners', 'UpdateBanners')->name('update.banners');
     });
 });
 
