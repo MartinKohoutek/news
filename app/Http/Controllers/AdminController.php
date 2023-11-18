@@ -36,12 +36,23 @@ class AdminController extends Controller
     }
 
     public function AdminProfileStore(Request $request) {
+        $request->validate([
+            'description' => 'required',
+        ]);
+
         $user = User::find(Auth::user()->id);
         
         $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+
+        $user->description = $request->description;
+        $user->facebook = $request->facebook;
+        $user->twitter = $request->twitter;
+        $user->instagram = $request->instagram;
+        $user->linkedin = $request->linkedin;
+        $user->googleplus = $request->googleplus;
 
         if ($request->file('photo')) {
             $img = $request->file('photo');

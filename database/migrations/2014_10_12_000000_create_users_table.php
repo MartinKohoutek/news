@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
+            $table->text('description');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('googleplus')->nullable();
             $table->enum('role', ['admin', 'user'])->default('user');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('email')->unique();
