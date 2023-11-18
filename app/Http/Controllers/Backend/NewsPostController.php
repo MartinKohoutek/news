@@ -134,15 +134,15 @@ class NewsPostController extends Controller
     }
 
     public function GetSubCategoryPosts($id) {
-        $subposts = NewsPost::with('user', 'subcategory')->where('subcategory_id', $id)->where('status', 1)->latest()->limit(4)->get();
+        $subposts = NewsPost::with('user', 'subcategory')->where('subcategory_id', $id)->latest()->limit(4)->get();
         return json_encode($subposts);
     }
 
     public function GetCategoryPosts($id) {
         if (Subcategory::where('category_id', $id)->first()) {
-            $subposts = NewsPost::with('user', 'category', 'subcategory')->where('category_id', $id)->where('status', 1)->latest()->limit(4)->get();
+            $subposts = NewsPost::with('user', 'category', 'subcategory')->where('category_id', $id)->latest()->limit(4)->get();
         } else {
-            $subposts = NewsPost::with('user', 'category')->where('category_id', $id)->where('status', 1)->latest()->limit(4)->get();
+            $subposts = NewsPost::with('user', 'category')->where('category_id', $id)->latest()->limit(4)->get();
         }
         return json_encode($subposts);
     }

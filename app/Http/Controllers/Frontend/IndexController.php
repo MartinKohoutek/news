@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\NewsPost;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -34,5 +36,17 @@ class IndexController extends Controller
         }
 
         return view('frontend.news.news_details', compact('news', 'tags', 'relatedNews', 'countAuthorPosts'));
+    }
+
+    public function NewsCategory($id, $slug) {
+        $news = NewsPost::where('status', 1)->where('category_id', $id)->orderBy('id', 'DESC')->get();
+        $cat = Category::where('id', $id)->first();
+        return view('frontend.news.news_category', compact('news', 'cat'));
+    }
+
+    public function NewsSubCategory($id, $slug) {
+        $news = NewsPost::where('status', 1)->where('subcategory_id', $id)->orderBy('id', 'DESC')->get();
+        $subcat = Subcategory::where('id', $id)->first();
+        return view('frontend.news.news_subcategory', compact('news', 'subcat'));
     }
 }

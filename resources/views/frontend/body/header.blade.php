@@ -62,7 +62,7 @@
                     @endphp
                     @if (count($newposts) > 0)
                     <li class="nav-item">
-                        <a class="nav-link" href="category1.html">{{ $category->category_name }}<i class="fa fa-caret-down"></i></a>
+                        <a class="nav-link" href="#">{{ $category->category_name }}<i class="fa fa-caret-down"></i></a>
                         <div class="mega-posts-menu">
                             <div class="posts-line">
                                 <ul class="filter-list">
@@ -81,16 +81,16 @@
                                     <div class="col-lg-3 col-md-6">
                                         <div class="news-post standart-post">
                                             <div class="post-image">
-                                                <a href="single-post">
+                                                <a href="{{ url('news/details/'.$post->id.'/'.$post->news_title_slug) }}">
                                                     <img src="{{ asset($post->image) }}" alt="">
                                                 </a>
                                                 @if ($post->subcategory_id)
-                                                <a href="#" class="category">{{ $post['subcategory']['subcategory_name'] }}</a>
+                                                <a href="{{ url('/news/subcategory/'.$post->subcategory_id.'/'.$post->subcategory->subcategory_slug) }}" class="category">{{ $post['subcategory']['subcategory_name'] }}</a>
                                                 @else
-                                                <a href="#" class="category">{{ $post['category']['category_name'] }}</a>
+                                                <a href="{{ url('news/category/'.$post->category_id.'/'.$post->category->category_slug) }}" class="category">{{ $post['category']['category_name'] }}</a>
                                                 @endif
                                             </div>
-                                            <h2><a href="single-post.html">{{ $post->news_title }}</a></h2>
+                                            <h2><a href="{{ url('news/details/'.$post->id.'/'.$post->news_title_slug) }}">{{ $post->news_title }}</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">{{ $post['user']['name'] }}</a></li>
                                                 <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
@@ -136,21 +136,21 @@
                     type: 'get',
                     dataType: "json",
                     success: function(data) {
-                        console.log(data[0].category_id);
                         $('.subcategory_posts#' + data[0].category_id).html('');
                         var d = $('.subcategory_posts#' + data[0].category_id).empty();
 
                         $.each(data, function(key, value) {
+                            val = window.location.origin + '/' + value.image;
                             $('.subcategory_posts#' + data[0].category_id)
                                 .append(`<div class="col-lg-3 col-md-6">
                                         <div class="news-post standart-post">
                                             <div class="post-image">
-                                                <a href="single-post">
-                                                    <img src="${value.image}" alt="">
+                                                <a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug}">
+                                                    <img src="${val}" alt="">
                                                 </a>
-                                                <a href="#" class="category">${value.subcategory.subcategory_name}</a>
+                                                <a href="${window.location.origin + '/news/subcategory/' + value.subcategory.id + '/' + value.subcategory.subcategory_slug}" class="category">${value.subcategory.subcategory_name}</a>
                                             </div>
-                                            <h2><a href="single-post.html">${value.news_title}</a></h2>
+                                            <h2><a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug}">${value.news_title}</a></h2>
                                             <ul class="post-tags">
                                                 <li><i class="lnr lnr-user"></i>by <a href="#">${value.user.name}</a></li>
                                                 <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
@@ -189,12 +189,12 @@
                                 .append(`<div class="col-lg-3 col-md-6">
                             <div class="news-post standart-post">
                                 <div class="post-image">
-                                    <a href="single-post">
-                                        <img src="${value.image}" alt="">
+                                    <a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug}">
+                                        <img src="${window.location.origin+'/'+ value.image}" alt="">
                                     </a>
-                                    <a href="#" class="category">${value?.subcategory?.subcategory_name == undefined ? value.category.category_name : value.subcategory.subcategory_name}</a>
+                                    <a href="${value?.subcategory?.subcategory_name == undefined ? window.location.origin + '/news/category/' + value.category.id + '/' + value.category.category_slug : window.location.origin + '/news/subcategory/' + value.subcategory.id + '/' + value.subcategory.subcategory_slug}" class="category">${value?.subcategory?.subcategory_name == undefined ? value.category.category_name : value.subcategory.subcategory_name}</a>
                                 </div>
-                                <h2><a href="single-post.html">${value.news_title}</a></h2>
+                                <h2><a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug}">${value.news_title}</a></h2>
                                 <ul class="post-tags">
                                     <li><i class="lnr lnr-user"></i>by <a href="#">${value.user.name}</a></li>
                                     <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
