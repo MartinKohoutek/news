@@ -1,5 +1,12 @@
 @extends('frontend.home_master')
 @section('home')
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<style>
+    .news-font {
+        font-size: 16px;
+    }
+</style>
 <div class="container">
 
     <div class="row mt-4">
@@ -24,9 +31,15 @@
                     </ul>
                 </div>
                 <img src="{{ asset($news->image) }}" alt="" height="100px">
-                <div class="text-boxes">
-                   {!! $news->news_details !!}
-                </div>
+                <!-- <div class="news-font"> -->
+                    <div style="margin-bottom: 30px;">
+                        <button id="inc" class="btn btn-primary">A+</button>
+                        <button id="dec" class="btn btn-primary">A-</button>
+                    </div>
+                    <div class="text-boxes news-font">
+                        {!! $news->news_details !!}
+                    </div>
+                <!-- </div> -->
                 <div class="text-boxes">
                     <h2>Tags</h2>
                     <ul class="tags-list">
@@ -332,4 +345,25 @@
     </div>
 
 </div>
+<script>
+    var size = 16;
+    function setFontSize(s) {
+        size = s;
+        $('.news-font p').css('font-size', '' + size + 'px');
+    }
+
+    function increaseFontSize() {
+        setFontSize(size + 5);
+    }
+
+    function decreaseFontSize() {
+        if (size > 5) {
+            setFontSize(size - 5);
+        }
+    }
+
+    $('#inc').click(increaseFontSize);
+    $('#dec').click(decreaseFontSize);
+    setFontSize(size);
+</script>
 @endsection
