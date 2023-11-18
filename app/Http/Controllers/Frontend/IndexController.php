@@ -24,8 +24,8 @@ class IndexController extends Controller
             ->get();
         $countAuthorPosts = NewsPost::where('user_id', $news->user_id)->count();
 
-        $latestNews = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
-        $popularNews = NewsPost::orderBy('view_count', 'DESC')->limit(8)->get();
+        // $latestNews = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        // $popularNews = NewsPost::orderBy('view_count', 'DESC')->limit(8)->get();
 
         $newsKey = 'blog'.$news->id;
         if (!Session::has($newsKey)) {
@@ -33,6 +33,6 @@ class IndexController extends Controller
             Session::put($newsKey, 1);
         }
 
-        return view('frontend.news.news_details', compact('news', 'tags', 'relatedNews', 'countAuthorPosts', 'latestNews', 'popularNews'));
+        return view('frontend.news.news_details', compact('news', 'tags', 'relatedNews', 'countAuthorPosts'));
     }
 }

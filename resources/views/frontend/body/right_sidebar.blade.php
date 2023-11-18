@@ -34,7 +34,7 @@
         </div>
 
         @php
-            $breakingPosts = App\Models\NewsPost::where('breaking_news', 1)->latest()->limit(3)->get();
+            $breakingPosts = App\Models\NewsPost::where('breaking_news', 1)->where('status', 1)->latest()->limit(3)->get();
         @endphp
         <div class="widget slider-widget">
             <h1>Featured Posts</h1>
@@ -60,7 +60,7 @@
             </div>
             
             @php
-                $latestPosts = App\Models\NewsPost::latest()->limit(3)->get();
+                $latestPosts = App\Models\NewsPost::where('status', 1)->latest()->limit(3)->get();
             @endphp
             <ul class="small-posts">
                 @foreach ($latestPosts as $item)

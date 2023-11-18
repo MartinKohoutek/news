@@ -21,7 +21,7 @@
                 </div>
 
                 @php
-                $popularNews = App\Models\NewsPost::orderBy('view_count', 'DESC')->limit(3)->get();
+                $popularNews = App\Models\NewsPost::where('status', 1)->orderBy('view_count', 'DESC')->limit(3)->get();
                 @endphp
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget popular-widget">
@@ -45,7 +45,7 @@
                 </div>
 
                 @php
-                    $featuredPost = App\Models\NewsPost::where('breaking_news', 1)->latest()->first();
+                    $featuredPost = App\Models\NewsPost::where('breaking_news', 1)->where('status', 1)->latest()->first();
                 @endphp
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget featured-widget">
