@@ -49,4 +49,9 @@ class IndexController extends Controller
         $subcat = Subcategory::where('id', $id)->first();
         return view('frontend.news.news_subcategory', compact('news', 'subcat'));
     }
+
+    public function NewsArchive() {
+        $news = NewsPost::latest()->paginate(5);
+        return view('frontend.news.news_archive', compact('news'));
+    }
 }

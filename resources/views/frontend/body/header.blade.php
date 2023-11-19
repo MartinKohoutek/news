@@ -117,7 +117,7 @@
                         </ul>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Archive</a>
+                        <a class="nav-link" href="{{ route('news.archive') }}">Archive</a>
                     </li>
                 </ul>
             </div>
