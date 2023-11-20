@@ -1,7 +1,30 @@
 <div class="col-lg-4 sidebar-sticky">
-
+<style>
+    .old-date {
+        position: relative;
+        margin-bottom: 10px;
+    }
+    .old-date input[type=submit] {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    top: 0;
+    background: #343a40;
+    /* border: none; */
+    color: #fff;
+    /* padding: 0 17px; */
+}
+</style>
     <!-- Sidebar -->
     <div class="sidebar theiaStickySidebar">
+        <div class="widget">
+            <h1>Old News</h1>
+            
+            <form class="old-date" action=" " method="post">
+                <input type="date" id="olddate" placeholder="Select Date" autocomplete="off" value="" name="m" required="" class="form-control" style="width: 75%;">
+                <input type="submit" value="Search" class="btn">
+            </form>
+        </div>
         <div class="widget social-widget">
             <h1>Stay Connected </h1>
             <p>Do you want to be informed everytime with our latest news?</p>
@@ -113,8 +136,8 @@
                             Pakistan set up Asia Cup final </a>
                     </h2>
                     <ul class="post-tags">
-                            <li>by <a href="#">Admin Jack</a></li>
-                        </ul>
+                        <li>by <a href="#">Admin Jack</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="secFive-smallItem">
@@ -126,8 +149,8 @@
                             Pakistan set up Asia Cup final</a>
                     </h2>
                     <ul class="post-tags">
-                            <li>by <a href="#">Admin Jack</a></li>
-                        </ul>
+                        <li>by <a href="#">Admin Jack</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="secFive-smallItem">
@@ -139,8 +162,8 @@
                             Pakistan set up Asia Cup final </a>
                     </h2>
                     <ul class="post-tags">
-                            <li>by <a href="#">Admin Jack</a></li>
-                        </ul>
+                        <li>by <a href="#">Admin Jack</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="secFive-smallItem">
@@ -152,8 +175,8 @@
                             Pakistan set up Asia Cup final </a>
                     </h2>
                     <ul class="post-tags">
-                            <li>by <a href="#">Admin Jack</a></li>
-                        </ul>
+                        <li>by <a href="#">Admin Jack</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="secFive-smallItem">
@@ -165,12 +188,12 @@
                             Pakistan set up Asia Cup final </a>
                     </h2>
                     <ul class="post-tags">
-                            <li>by <a href="#">Admin Jack</a></li>
-                        </ul>
+                        <li>by <a href="#">Admin Jack</a></li>
+                    </ul>
                 </div>
             </div>
-        <!-- </div> -->
+            <!-- </div> -->
+        </div>
     </div>
-    </div>
-   
+
 </div>
