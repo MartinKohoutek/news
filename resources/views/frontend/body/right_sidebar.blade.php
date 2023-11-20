@@ -34,7 +34,7 @@
         </div>
 
         @php
-            $breakingPosts = App\Models\NewsPost::where('breaking_news', 1)->where('status', 1)->latest()->limit(3)->get();
+        $breakingPosts = App\Models\NewsPost::where('breaking_news', 1)->where('status', 1)->latest()->limit(3)->get();
         @endphp
         <div class="widget slider-widget">
             <h1>Featured Posts</h1>
@@ -43,9 +43,9 @@
                     @foreach ($breakingPosts as $item)
                     <li>
                         <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">
-                        <img alt="" src="{{ asset($item->image) }}" />
+                            <img alt="" src="{{ asset($item->image) }}" />
                         </a>
-                        
+
                         <div class="slider-caption">
                             <!-- <a href="#" class="category">Winter sports</a> -->
                             <h2><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
@@ -58,9 +58,9 @@
                     @endforeach
                 </ul>
             </div>
-            
+
             @php
-                $latestPosts = App\Models\NewsPost::where('status', 1)->latest()->limit(3)->get();
+            $latestPosts = App\Models\NewsPost::where('status', 1)->latest()->limit(3)->get();
             @endphp
             <ul class="small-posts">
                 @foreach ($latestPosts as $item)
@@ -80,7 +80,7 @@
         </div>
 
         @php
-            $banners = App\Models\Banner::find(1);
+        $banners = App\Models\Banner::find(1);
         @endphp
         <div class="advertisement">
             <a href="#"><img src="{{ asset($banners->right_sidebar) }}" alt=""></a>
@@ -98,7 +98,79 @@
                 <li><a href="#">Rugby</a></li>
             </ul>
         </div>
+        <!-- <div class="col-lg-12 col-md-12"> -->
+        <div class="title-section">
+            <h1>Video Gallery</h1>
+        </div>
 
+        <div>
+            <div class="secFive-smallItem">
+                <div class="secFive-smallImg">
+                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=z3ZM1TUNoUY" class="home-video-icon popup"><i class="las la-video"></i></a>
+                    <h2 class="secFive_title2">
+                        <a href="https://www.youtube.com/watch?v=z3ZM1TUNoUY" class="popup">
+                            Pakistan set up Asia Cup final </a>
+                    </h2>
+                    <ul class="post-tags">
+                            <li>by <a href="#">Admin Jack</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="secFive-smallItem">
+                <div class="secFive-smallImg">
+                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=XTUg53YVaqQ" class="home-video-icon popup"><i class="las la-video"></i></a>
+                    <h2 class="secFive_title2">
+                        <a href="https://www.youtube.com/watch?v=XTUg53YVaqQ" class="popup">
+                            Pakistan set up Asia Cup final</a>
+                    </h2>
+                    <ul class="post-tags">
+                            <li>by <a href="#">Admin Jack</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="secFive-smallItem">
+                <div class="secFive-smallImg">
+                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=qr3CeJJ_mkM" class="home-video-icon popup"><i class="las la-video"></i></a>
+                    <h2 class="secFive_title2">
+                        <a href="https://www.youtube.com/watch?v=qr3CeJJ_mkM" class="popup">
+                            Pakistan set up Asia Cup final </a>
+                    </h2>
+                    <ul class="post-tags">
+                            <li>by <a href="#">Admin Jack</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="secFive-smallItem">
+                <div class="secFive-smallImg">
+                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=BU12aHPjoNo" class="home-video-icon popup"><i class="las la-video"></i></a>
+                    <h2 class="secFive_title2">
+                        <a href="https://www.youtube.com/watch?v=BU12aHPjoNo" class="popup">
+                            Pakistan set up Asia Cup final </a>
+                    </h2>
+                    <ul class="post-tags">
+                            <li>by <a href="#">Admin Jack</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="secFive-smallItem">
+                <div class="secFive-smallImg">
+                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
+                    <a href="https://www.youtube.com/watch?v=TH0kuBADgSI" class="home-video-icon popup"><i class="las la-video"></i></a>
+                    <h2 class="secFive_title2">
+                        <a href="https://www.youtube.com/watch?v=TH0kuBADgSI" class="popup">
+                            Pakistan set up Asia Cup final </a>
+                    </h2>
+                    <ul class="post-tags">
+                            <li>by <a href="#">Admin Jack</a></li>
+                        </ul>
+                </div>
+            </div>
+        <!-- </div> -->
     </div>
-
+    </div>
+   
 </div>
