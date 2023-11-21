@@ -1,6 +1,6 @@
 <div class="col-lg-4 sidebar-sticky">
     <style>
-       
+
     </style>
     <!-- Sidebar -->
     <div class="sidebar theiaStickySidebar">
@@ -138,74 +138,27 @@
         </div>
 
         <div>
+            @php
+                $videos = App\Models\VideoGallery::latest()->limit(3)->get();
+            @endphp
+            @foreach ($videos as $video)
+
             <div class="secFive-smallItem">
                 <div class="secFive-smallImg">
-                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=z3ZM1TUNoUY" class="home-video-icon popup"><i class="las la-video"></i></a>
+                    <img src="{{ asset($video->video_image) }}">
+                    <a href="{{ $video->video_url }}" class="home-video-icon popup"><i class="las la-video"></i></a>
                     <h2 class="secFive_title2">
-                        <a href="https://www.youtube.com/watch?v=z3ZM1TUNoUY" class="popup">
-                            Pakistan set up Asia Cup final </a>
+                        <a href="{{ $video->video_url }}" class="popup">
+                            {{ $video->video_title }} </a>
                     </h2>
                     <ul class="post-tags">
-                        <li>by <a href="#">Admin Jack</a></li>
+                        <li>by <a href="#">AAA</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="secFive-smallItem">
-                <div class="secFive-smallImg">
-                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=XTUg53YVaqQ" class="home-video-icon popup"><i class="las la-video"></i></a>
-                    <h2 class="secFive_title2">
-                        <a href="https://www.youtube.com/watch?v=XTUg53YVaqQ" class="popup">
-                            Pakistan set up Asia Cup final</a>
-                    </h2>
-                    <ul class="post-tags">
-                        <li>by <a href="#">Admin Jack</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="secFive-smallItem">
-                <div class="secFive-smallImg">
-                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=qr3CeJJ_mkM" class="home-video-icon popup"><i class="las la-video"></i></a>
-                    <h2 class="secFive_title2">
-                        <a href="https://www.youtube.com/watch?v=qr3CeJJ_mkM" class="popup">
-                            Pakistan set up Asia Cup final </a>
-                    </h2>
-                    <ul class="post-tags">
-                        <li>by <a href="#">Admin Jack</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="secFive-smallItem">
-                <div class="secFive-smallImg">
-                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=BU12aHPjoNo" class="home-video-icon popup"><i class="las la-video"></i></a>
-                    <h2 class="secFive_title2">
-                        <a href="https://www.youtube.com/watch?v=BU12aHPjoNo" class="popup">
-                            Pakistan set up Asia Cup final </a>
-                    </h2>
-                    <ul class="post-tags">
-                        <li>by <a href="#">Admin Jack</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="secFive-smallItem">
-                <div class="secFive-smallImg">
-                    <img src="{{ asset('upload/news/1782565735848410.jpg') }}">
-                    <a href="https://www.youtube.com/watch?v=TH0kuBADgSI" class="home-video-icon popup"><i class="las la-video"></i></a>
-                    <h2 class="secFive_title2">
-                        <a href="https://www.youtube.com/watch?v=TH0kuBADgSI" class="popup">
-                            Pakistan set up Asia Cup final </a>
-                    </h2>
-                    <ul class="post-tags">
-                        <li>by <a href="#">Admin Jack</a></li>
-                    </ul>
-                </div>
-            </div>
+            @endforeach
             <!-- </div> -->
         </div>
     </div>
 
 </div>
-
