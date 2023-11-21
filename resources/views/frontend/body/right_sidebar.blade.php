@@ -30,8 +30,9 @@
         <div class="widget">
             <h1>Old News</h1>
 
-            <form class="old-date" action=" " method="post">
-                <input type="date" id="olddate" placeholder="Select Date" autocomplete="off" value="" name="m" required="" class="form-control" style="width: 75%;">
+            <form class="old-date" action="{{ route('search.by.date') }}" method="post">
+                @csrf
+                <input type="date" id="olddate" placeholder="Select Date" autocomplete="off" name="date" class="form-control" style="width: 75%;">
                 <input type="submit" value="Search" class="btn">
             </form>
         </div>

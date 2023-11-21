@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\Subcategory;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -53,5 +54,11 @@ class IndexController extends Controller
     public function NewsArchive() {
         $news = NewsPost::latest()->paginate(5);
         return view('frontend.news.news_archive', compact('news'));
+    }
+
+    public function SearchByDate(Request $request) {
+        $date = (new DateTime($request->date))->format('d-m-Y');
+        $news = NewsPost::where('post_date', $date)->latest()->paginate(5);
+        return view('frontend.news.news_search_by_date', compact('news', 'date'));
     }
 }

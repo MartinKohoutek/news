@@ -115,9 +115,10 @@ Route::controller(NewsPostController::class)->group(function(){
 
 Route::controller(IndexController::class)->group(function(){
     Route::get('/news/details/{id}/{slug}', 'NewsDetails');
-    Route::get('/news/category/{id}/{slug}', 'NewsCategory');
-    Route::get('/news/subcategory/{id}/{slug}', 'NewsSubCategory');
+    Route::get('/news/category/{id}/{slug}', 'NewsCategory')->name('news.category');
+    Route::get('/news/subcategory/{id}/{slug}', 'NewsSubCategory')->name('news.subcategory');
     Route::get('/news/archive', 'NewsArchive')->name('news.archive');
+    Route::post('/search/by/date', 'SearchByDate')->name('search.by.date');
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
