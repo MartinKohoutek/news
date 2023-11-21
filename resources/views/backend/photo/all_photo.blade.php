@@ -41,7 +41,7 @@
                             <td>{{ $item->photo_title }}</td>
                             <td>{{ $item->post_date }}</td>
                             <td>
-                                <a href="{{ route('edit.category', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
+                                <a href="{{ route('edit.photo.gallery', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
                                 <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
                             </td>
                         </tr>

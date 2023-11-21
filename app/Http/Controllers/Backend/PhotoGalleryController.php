@@ -40,4 +40,31 @@ class PhotoGalleryController extends Controller
 
         return redirect()->route('all.photo.gallery')->with($notification);
     }
+
+    public function EditPhotoGallery($id) {
+        $photo = PhotoGallery::findOrFail($id);
+        return view('backend.photo.edit_photo', compact('photo'));
+    }
+
+    public function UpdatePhotoGallery(Request $request) {
+        $photo = PhotoGallery::findOrFail($request->id);
+
+        if ($request->file('photo_gallery')) {
+            $image = $request->file('photo_gallery');
+            unlink($photo->photo_gallery);
+            $imgName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(700, 400)->save('upload/photos/'.$imgName);
+            $saveUrl = 'upload/photos/'.$imgName;
+            $photo->update(['photo_gallery' => $saveUrl]);
+        }
+
+        $photo->update(['photo_title' => $request->photo_title]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Photo Gallery Updated Successfully!',
+        ];
+
+        return redirect()->route('all.photo.gallery')->with($notification);
+    }
 }
