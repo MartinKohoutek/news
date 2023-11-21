@@ -7,9 +7,11 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Models\VideoGallery;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -115,7 +117,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/edit/photo/gallery/{id}', 'EditPhotoGallery')->name('edit.photo.gallery');
         Route::post('/update/photo/gallery', 'UpdatePhotoGallery')->name('update.photo.gallery');
         Route::get('/delete/photo/gallery/{id}', 'DeletePhotoGallery')->name('delete.photo.gallery');
-    
+    });
+
+    Route::controller(VideoGalleryController::class)->group(function(){
+        Route::get('/all/video/gallery', 'AllVideoGallery')->name('all.video.gallery');
     });
 });
 

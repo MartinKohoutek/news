@@ -3,19 +3,19 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Photo Gallery</div>
+        <div class="breadcrumb-title pe-3">Video Gallery</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Photos</li>
+                    <li class="breadcrumb-item active" aria-current="page">All Video</li>
                 </ol>
             </nav>
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.photo.gallery') }}" class="btn btn-primary">Add Photos</a>
+                <a href="{{ route('add.photo.gallery') }}" class="btn btn-primary">Add Video</a>
             </div>
         </div>
     </div>
@@ -28,17 +28,19 @@
                         <tr>
                             <th>Id</th>
                             <th>Image</th>
+                            <th>Url</th>
                             <th>Title</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($photos as $key => $item)
+                        @foreach ($videos as $key => $item)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            <td><img src="{{ asset($item->photo_gallery) }}" alt="" style="width: 50px; height: 50px"></td>
-                            <td>{{ $item->photo_title }}</td>
+                            <td><img src="{{ asset($item->video_image) }}" alt="" style="width: 50px; height: 50px"></td>
+                            <td>{{ $item->video_url }}</td>
+                            <td>{{ $item->video_title }}</td>
                             <td>{{ $item->post_date }}</td>
                             <td>
                                 <a href="{{ route('edit.photo.gallery', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
@@ -51,6 +53,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Image</th>
+                            <th>Url</th>
                             <th>Title</th>
                             <th>Date</th>
                             <th>Action</th>
