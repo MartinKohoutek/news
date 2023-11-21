@@ -10,16 +10,19 @@
                     <h1>LIVE TV </h1>
                     <div class="flashIcon"></div>
                 </div>
+                @php
+                    $liveTV = App\Models\LiveTV::find(1);
+                @endphp
                 <div class="popup-wrpp">
                     <div class="live_image">
-                        <img width="700" height="400" src="{{ asset('upload/news/1782565735848410.jpg') }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy">
+                        <img width="700" height="400" src="{{ asset($liveTV->live_image) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy">
                         <div data-mfp-src="#mymodal" class="live-icon modal-live"> <i class="las la-play"></i> </div>
                     </div>
                     <div class="live-popup">
                         <div id="mymodal" class="mfp-hide" role="dialog" aria-labelledby="modal-titles" aria-describedby="modal-contents">
                             <div id="modal-contents">
                                 <div class="embed-responsive embed-responsive-16by9 embed-responsive-item">
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/9Auq9mYxFEE?si=lwu2q6JCkXGJZwwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                <iframe width="560" height="315" src="{{ $liveTV->live_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
