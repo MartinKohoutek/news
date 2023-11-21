@@ -12,4 +12,8 @@ class PhotoGalleryController extends Controller
         $photos = PhotoGallery::latest()->get();
         return view('backend.photo.all_photo', compact('photos'));
     }
+
+    public function AddPhotoGallery() {
+        return view('backend.photo.add_photo');
+    }
 }
