@@ -51,7 +51,7 @@ class PhotoGalleryController extends Controller
 
         if ($request->file('photo_gallery')) {
             $image = $request->file('photo_gallery');
-            unlink($photo->photo_gallery);
+            @unlink($photo->photo_gallery);
             $imgName = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(700, 400)->save('upload/photos/'.$imgName);
             $saveUrl = 'upload/photos/'.$imgName;

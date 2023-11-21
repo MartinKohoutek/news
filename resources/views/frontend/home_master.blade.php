@@ -109,10 +109,10 @@
             navText: ["<i Class='las la-angle-left'></i>", "<i Class='las la-angle-right'></i>"],
         });
         $('.homeGallery1').owlCarousel({
-            loop: true,
+            loop: false,
             margin: 10,
             nav: false,
-            items: 6,
+            items: 4,
             dots: true,
             center: true,
             autoplay: true,
@@ -130,7 +130,7 @@
                     items: 4,
                 },
                 1000: {
-                    items: 6,
+                    items: 4,
                 }
             }
         });
