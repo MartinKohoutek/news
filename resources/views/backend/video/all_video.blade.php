@@ -15,7 +15,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.photo.gallery') }}" class="btn btn-primary">Add Video</a>
+                <a href="{{ route('add.video.gallery') }}" class="btn btn-primary">Add Video</a>
             </div>
         </div>
     </div>
