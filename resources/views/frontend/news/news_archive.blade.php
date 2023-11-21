@@ -1,22 +1,17 @@
 @extends('frontend.home_master')
 @section('home')
 <div class="container">
-
     <div class="row">
         <div class="col-lg-8">
-
             <!-- archive box -->
             <div class="archive-box">
                 <h1>Archive</h1>
             </div>
             <!-- End archive box -->
-
             <!-- Posts-block -->
             <div class="posts-block">
-
                 <div class="articles-box-style">
                     @foreach ($news as $item)
-
                     <div class="news-post article-post">
                         <div class="row">
                             <div class="col-sm-5">
@@ -44,15 +39,10 @@
                     @endforeach
                     {{ $news->links('vendor.pagination.custom') }}
                 </div>
-
-
             </div>
             <!-- End Posts-block -->
-
         </div>
-
         @include('frontend.body.right_sidebar')
     </div>
-
 </div>
 @endsection

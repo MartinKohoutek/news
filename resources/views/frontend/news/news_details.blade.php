@@ -1,12 +1,5 @@
 @extends('frontend.home_master')
 @section('home')
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-<style>
-    .news-font {
-        font-size: 16px;
-    }
-</style>
 <div class="container">
 
     <div class="row mt-4">
@@ -32,13 +25,13 @@
                 </div>
                 <img src="{{ asset($news->image) }}" alt="" height="100px">
                 <!-- <div class="news-font"> -->
-                    <div style="margin-bottom: 30px;">
-                        <button id="inc" class="btn btn-primary">A+</button>
-                        <button id="dec" class="btn btn-primary">A-</button>
-                    </div>
-                    <div class="text-boxes news-font">
-                        {!! $news->news_details !!}
-                    </div>
+                <div style="margin-bottom: 30px;">
+                    <button id="inc" class="btn btn-primary">A+</button>
+                    <button id="dec" class="btn btn-primary">A-</button>
+                </div>
+                <div class="text-boxes news-font">
+                    {!! $news->news_details !!}
+                </div>
                 <!-- </div> -->
                 <div class="text-boxes">
                     <h2>Tags</h2>
@@ -52,7 +45,7 @@
             <!-- End single-post -->
 
             @php
-                $banners = App\Models\Banner::find(1);
+            $banners = App\Models\Banner::find(1);
             @endphp
             <!-- Advertisement -->
             <div class="advertisement">
@@ -69,7 +62,7 @@
                 <div class="owl-wrapper">
                     <div class="owl-carousel" data-num="3">
                         @foreach ($relatedNews as $item)
-                        <div class="item">
+                        <div class="item" style="padding: 0 15px;">
                             <div class="news-post standart-post">
                                 <div class="post-image">
                                     <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">
@@ -219,6 +212,7 @@
 </div>
 <script>
     var size = 16;
+
     function setFontSize(s) {
         size = s;
         $('.news-font p').css('font-size', '' + size + 'px');

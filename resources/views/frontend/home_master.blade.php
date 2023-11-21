@@ -13,7 +13,10 @@
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/modernmag-assets.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" id="newsflash-magnific-css" href="{{ asset('frontend/assets/css/magnific-popup.css') }}" media="all">
+    <link rel="stylesheet" id="newsflash-carousel-css" href="{{ asset('frontend/assets/css/owl.carousel.min.css') }}" media="all">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 
 <body class="boxed-style">
@@ -31,7 +34,7 @@
         </section>
         <!-- End content section -->
 
-        @include('frontend.body.footer')       
+        @include('frontend.body.footer')
     </div>
     <!-- End Container -->
 
@@ -74,13 +77,88 @@
         var type = "{{ Session::get('alert-type', 'info') }}";
         toastr.options.closeButton = true;
         switch (type) {
-            case 'info': toastr.info("{{ Session::get('message') }}"); break;
-            case 'success': toastr.success("{{ Session::get('message') }}"); break;
-            case 'warning': toastr.warning("{{ Session::get('message') }}"); break;
-            case 'error': toastr.error("{{ Session::get('message') }}"); break;
+            case 'info':
+                toastr.info("{{ Session::get('message') }}");
+                break;
+            case 'success':
+                toastr.success("{{ Session::get('message') }}");
+                break;
+            case 'warning':
+                toastr.warning("{{ Session::get('message') }}");
+                break;
+            case 'error':
+                toastr.error("{{ Session::get('message') }}");
+                break;
         }
     </script>
     @endif
+
+    <script src="{{ asset('frontend/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/lazyload.min.js') }}" id="newsflash-lazyload-js"></script>
+    <script>
+        $('.homeGallery').owlCarousel({
+            loop: false,
+            margin: 10,
+            items: 1,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            smartSpeed: 1000,
+            autoplayTimeout: 5000,
+            navText: ["<i Class='las la-angle-left'></i>", "<i Class='las la-angle-right'></i>"],
+        });
+        $('.homeGallery1').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            items: 6,
+            dots: true,
+            center: true,
+            autoplay: true,
+            smartSpeed: 1000,
+            autoplayTimeout: 5000,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 3,
+                },
+                480: {
+                    items: 3,
+                },
+                768: {
+                    items: 4,
+                },
+                1000: {
+                    items: 6,
+                }
+            }
+        });
+        $('.themeGallery').magnificPopup({
+            type: 'image',
+            mainClass: 'mfp-with-zoom',
+            gallery: {
+                enabled: true
+            },
+            zoom: {
+                enabled: true,
+                duration: 500,
+                easing: 'ease-in-out',
+                opener: function(openerElement) {
+                    return openerElement.is('img') ? openerElement : openerElement.find('img');
+                }
+            }
+        });
+        $('.popup').magnificPopup({
+            type: 'iframe'
+        });
+        $('.modal-live').magnificPopup({
+            type: 'inline',
+            closeBtnInside: true,
+            autoFocusLast: true,
+            focus: ".modal-titles",
+        });
+    </script>
 </body>
 
 </html>

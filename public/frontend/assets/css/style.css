@@ -3472,3 +3472,143 @@ font-style: italic;
   left: 14%;
 }
 }
+
+.old-date {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.old-date input[type=submit] {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  top: 0;
+  background: #343a40;
+  /* border: none; */
+  color: #fff;
+  /* padding: 0 17px; */
+}
+
+.live-item{
+  margin-bottom:20px
+}
+.live_title{
+  text-align:left;
+  position:relative;
+  padding-left:13px;
+  /* background:#19232d; */
+  margin-bottom:5px;
+}
+.live_title h1{
+  /* font-size:17px; */
+  /* color:#fff; */
+  text-decoration:none;
+  display:inline-block;
+  padding:10px 20px;
+  width:100%
+}
+.live_image{
+  position:relative;
+  border:2px solid #343a40
+}
+.live_image img{
+  width:100%;
+  height:219px;
+  object-fit:cover
+}
+.live-icon i{
+  position:absolute;
+  top:49%;
+  left:49%;
+  height:40px;
+  width:40px;
+  background:rgba(0,0,0,.14);
+  transform:translate(-50%,-50%);
+  text-align:center;
+  line-height:36px;
+  color:#fff;
+  border-radius:50%;
+  font-size:24px;
+  padding-left:3px;
+  border:2px solid #fff;
+  box-shadow:0 0 30px 2px gray;
+  opacity:.8;
+  transition:.8s all;
+  cursor:pointer
+}
+.live_image:hover .live-icon i{
+  background:#fff;
+  color:#8b1010
+}
+.flashIcon{
+  width:14px;
+  height:14px;
+  background:#ff7e00;
+  border-radius:50%;
+  text-align:center;
+  -webkit-animation:animate 3s linear infinite;
+  animation:animate 3s linear infinite
+}
+.flashIcon{
+  position:absolute;
+  left:8px;
+  top:27%;
+  content:""
+}
+@keyframes animate{
+  0%{
+      box-shadow:0 0 0 0 #ff7e00,0 0 0 0 #ff7e00
+  }
+  40%{
+      box-shadow:0 0 0 20px transparent,0 0 0 0 #ff7e00
+  }
+  80%{
+      box-shadow:0 0 0 20px transparent,0 0 0 20px transparent
+  }
+  100%{
+      box-shadow:0 0 0 0 transparent,0 0 0 20px transparent
+  }
+}
+
+
+
+.popup-wrpp{
+  position:relative
+}
+.quick-image img{
+  width:100%
+}
+#mymodal{
+  position:relative;
+  background-color:#fff;
+  max-width:900px;
+  margin:0 auto;
+  padding:20px;
+  box-shadow:0 0 8px #333;
+  border-radius:5px;
+  transition:.8s all
+}
+.mfp-close-btn-in .mfp-close{
+  background:#01284f;
+  width:30px!important;
+  height:30px;
+  line-height:25px;
+  opacity:inherit;
+  color:#fff;
+  text-align:center;
+  position:absolute;
+  right:-5px;
+  top:-8px;
+  border:3px solid #fff;
+  border-radius:50%;
+  box-shadow:0 0 10px #333;
+  padding-right:0
+}
+
+.mfp-close-btn-in .mfp-close {
+  color: #fff!important;
+}
+
+.news-font {
+  font-size: 16px;
+}

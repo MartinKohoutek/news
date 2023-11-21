@@ -1,25 +1,35 @@
 <div class="col-lg-4 sidebar-sticky">
-<style>
-    .old-date {
-        position: relative;
-        margin-bottom: 10px;
-    }
-    .old-date input[type=submit] {
-    position: absolute;
-    right: 0;
-    height: 100%;
-    top: 0;
-    background: #343a40;
-    /* border: none; */
-    color: #fff;
-    /* padding: 0 17px; */
-}
-</style>
+    <style>
+       
+    </style>
     <!-- Sidebar -->
     <div class="sidebar theiaStickySidebar">
         <div class="widget">
+            <div class="live-item">
+                <div class="live_title">
+                    <h1>LIVE TV </h1>
+                    <div class="flashIcon"></div>
+                </div>
+                <div class="popup-wrpp">
+                    <div class="live_image">
+                        <img width="700" height="400" src="{{ asset('upload/news/1782565735848410.jpg') }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy">
+                        <div data-mfp-src="#mymodal" class="live-icon modal-live"> <i class="las la-play"></i> </div>
+                    </div>
+                    <div class="live-popup">
+                        <div id="mymodal" class="mfp-hide" role="dialog" aria-labelledby="modal-titles" aria-describedby="modal-contents">
+                            <div id="modal-contents">
+                                <div class="embed-responsive embed-responsive-16by9 embed-responsive-item">
+                                    <iframe class="" src=" " allowfullscreen="allowfullscreen" width="100%" height="400px"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widget">
             <h1>Old News</h1>
-            
+
             <form class="old-date" action=" " method="post">
                 <input type="date" id="olddate" placeholder="Select Date" autocomplete="off" value="" name="m" required="" class="form-control" style="width: 75%;">
                 <input type="submit" value="Search" class="btn">
@@ -197,3 +207,4 @@
     </div>
 
 </div>
+
