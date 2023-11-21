@@ -25,7 +25,7 @@
                         </div>
                         <h5 class="mb-0 text-primary">Add Photos</h5>
                     </div>
-                    <form action="{{ route('store.category') }}" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('store.photo.gallery') }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
                         @csrf
                         <div class="row mt-3 mb-3">
                             <div class="col-md-6 form-group">
