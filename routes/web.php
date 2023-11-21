@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminManageController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\LiveTvController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -126,6 +127,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/edit/video/gallery/{id}', 'EditVideoGallery')->name('edit.video.gallery');
         Route::post('/update/video/gallery', 'UpdateVideoGallery')->name('update.video.gallery');
         Route::get('/delete/video/gallery/{id}', 'DeleteVideoGallery')->name('delete.video.gallery');
+    });
+
+    Route::controller(LiveTvController::class)->group(function(){
+        Route::get('/update/live/tv', 'UpdateLiveTv')->name('update.live.tv');
     });
 });
 

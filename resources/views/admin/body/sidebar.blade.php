@@ -88,6 +88,8 @@
                 </li>
                 <li> <a href="{{ route('all.video.gallery') }}"><i class="bx bx-right-arrow-alt"></i>Video Gallery Settings</a>
                 </li>
+                <li> <a href="{{ route('update.live.tv') }}"><i class="bx bx-right-arrow-alt"></i>Live TV Settings</a>
+                </li>
             </ul>
         </li>
         <li class="menu-label">Settings</li>
