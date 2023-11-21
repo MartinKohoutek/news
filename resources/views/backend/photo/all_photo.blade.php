@@ -42,7 +42,7 @@
                             <td>{{ $item->post_date }}</td>
                             <td>
                                 <a href="{{ route('edit.photo.gallery', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
-                                <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
+                                <a href="{{ route('delete.photo.gallery', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
                             </td>
                         </tr>
                         @endforeach

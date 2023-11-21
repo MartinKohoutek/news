@@ -67,4 +67,17 @@ class PhotoGalleryController extends Controller
 
         return redirect()->route('all.photo.gallery')->with($notification);
     }
+
+    public function DeletePhotoGallery($id) {
+        $photo = PhotoGallery::findOrFail($id);
+        unlink($photo->photo_gallery);
+        $photo->delete();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Photo Deleted Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

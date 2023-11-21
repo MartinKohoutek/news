@@ -114,6 +114,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::post('/store/photo/gallery', 'StorePhotoGallery')->name('store.photo.gallery');
         Route::get('/edit/photo/gallery/{id}', 'EditPhotoGallery')->name('edit.photo.gallery');
         Route::post('/update/photo/gallery', 'UpdatePhotoGallery')->name('update.photo.gallery');
+        Route::get('/delete/photo/gallery/{id}', 'DeletePhotoGallery')->name('delete.photo.gallery');
     
     });
 });
