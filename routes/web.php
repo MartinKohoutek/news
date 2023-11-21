@@ -131,6 +131,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::controller(LiveTvController::class)->group(function(){
         Route::get('/update/live/tv', 'UpdateLiveTv')->name('update.live.tv');
+        Route::post('/store/live/tv', 'StoreLiveTv')->name('store.live.tv');
     });
 });
 

@@ -25,7 +25,7 @@
                         </div>
                         <h5 class="mb-0 text-primary">Set Live TV</h5>
                     </div>
-                    <form action="{{ route('update.video.gallery') }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
+                    <form action="{{ route('store.live.tv') }}" method="post" class="row g-3" id="myForm" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id" value="{{ $liveTV->id }}">
                         <div class="row mt-3 mb-3">
