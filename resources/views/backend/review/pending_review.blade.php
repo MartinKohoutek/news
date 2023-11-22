@@ -1,13 +1,5 @@
 @extends('admin.admin_dashboard')
 @section('admin')
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<style>
-    .form-check-input:checked {
-        color: #fff;
-        background-color: #15ca20;
-        border-color: #15ca20;
-    }
-</style>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -57,9 +49,6 @@
                                 @else ($item->status == 1)
                                 <span class="badge rounded-pill bg-success">Approved</span>
                                 @endif
-                                <!-- <div class="form-check form-switch">
-                                    <input class="form-check-input d-block mx-auto status-toggle" data-user-id="{{ $item->id }}" type="checkbox" title="Set User Account Active/Inactive" id="check{{ $item->id }}" style="transform: scale(2);" {{ $item->status == 'active' ? 'checked' : ''}} />
-                                </div> -->
                             </td>
                             <td>
                                 <a href="{{ route('approve.review', $item->id) }}" class="btn btn-sm btn-primary radius-30">Approve</a>
@@ -71,9 +60,9 @@
                         <tr>
                             <th>Id</th>
                             <th>Photo</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th>User</th>
+                            <th>News</th>
+                            <th>Comment</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -83,28 +72,4 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function(){
-        $('.status-toggle').on('change', function(){
-            var user_id = $(this).data('user-id');
-            var is_checked = $(this).is(':checked');
-
-            $.ajax({
-               url: "{{ route('change.admin.status') }}",
-               method: "post",
-               data: {
-                 user_id: user_id,
-                 is_checked: is_checked ? 'active' : 'inactive',
-                 _token: "{{ csrf_token() }}",
-               },
-               success: function(response) {
-                 toastr.success(response.message);
-               },
-               error: function(e) {
-                 console.log(e);
-               }
-            });
-        });
-    });
-</script>
 @endsection

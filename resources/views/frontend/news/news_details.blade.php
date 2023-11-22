@@ -125,6 +125,7 @@
                 <div class="title-section">
                     <h1><span>{{ count($comments) }} {{ count($comments) == 1 ? 'Comment' : 'Comments' }}</span></h1>
                 </div>
+                @if (count($comments) > 0)
                 <ul class="comment-tree">
                     @foreach ($comments as $item)
                     <li>
@@ -139,6 +140,9 @@
                     </li>
                     @endforeach
                 </ul>
+                @else
+                <p class="mb-5">The are no comments for this article yet!</p>
+                @endif
             </div>
             <!-- End comment area box -->
 
@@ -169,7 +173,10 @@
                         </div>
                     </div>
                     <label for="comment">Comment*</label>
-                    <textarea id="comment" name="comment"></textarea>
+                    @error('comment')
+                        <span class="text-danger">Comment is required!</span>
+                    @enderror
+                    <textarea id="comment" name="comment" class="@error('comment') is-invalid @enderror"></textarea>
                     <button type="submit" id="submit-contact">
                         <i class="fa fa-comment"></i> Post Comment
                     </button>
