@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Models\VideoGallery;
@@ -146,6 +147,10 @@ Route::controller(IndexController::class)->group(function(){
     Route::get('/news/subcategory/{id}/{slug}', 'NewsSubCategory')->name('news.subcategory');
     Route::get('/news/archive', 'NewsArchive')->name('news.archive');
     Route::post('/search/by/date', 'SearchByDate')->name('search.by.date');
+});
+
+Route::controller(ReviewController::class)->group(function(){
+    Route::post('/store/review', 'StoreReview')->name('store.review');
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');

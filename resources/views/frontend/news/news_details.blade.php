@@ -1,5 +1,10 @@
 @extends('frontend.home_master')
 @section('home')
+<style>
+    .contact-form-box #comment-form input[type="text"] {
+    background-color: #dcdcdc;
+}
+</style>
 <div class="container">
 
     <div class="row mt-4">
@@ -177,24 +182,27 @@
             </div>
             <!-- End comment area box -->
 
+            @guest
+            <p><b>For Adding Comments you need to Login first!</b></p>
+            @else
             <!-- contact form box -->
             <div class="contact-form-box">
                 <div class="title-section">
                     <h1><span>Leave a Comment</span> <span class="email-not-published">Your email address will not be published.</span></h1>
                 </div>
-                <form id="comment-form">
+                <form id="comment-form" method="post" action="{{ route('store.review') }}">
+                    @csrf
+                    <input type="hidden" name="news_id" value="{{ $news->id }}">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="name">Name*</label>
-                            <input id="name" name="name" type="text">
+                            <label for="name">Name</label>
+                            <input id="name" name="name" type="text" value="{{ Auth::user()->name }}" disabled>
                         </div>
                         <div class="col-md-6">
-                            <label for="mail">E-mail*</label>
-                            <input id="mail" name="mail" type="text">
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="text" value="{{ Auth::user()->email }}" disabled>
                         </div>
                     </div>
-                    <label for="website">Website</label>
-                    <input id="website" name="website" type="text">
                     <label for="comment">Comment*</label>
                     <textarea id="comment" name="comment"></textarea>
                     <button type="submit" id="submit-contact">
@@ -203,7 +211,7 @@
                 </form>
             </div>
             <!-- End contact form box -->
-
+            @endguest
         </div>
 
         @include('frontend.body.right_sidebar')
