@@ -44,6 +44,10 @@ Route::middleware('auth')->group(function(){
         Route::get('/user/change/password', 'UserChangePassword')->name('user.change.password');
         Route::post('/user/update/password', 'UserUpdatePassword')->name('user.update.password');
     });
+
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/user/comments', 'UserComments')->name('user.comments');
+    });
 });
 
 // Route::get('/dashboard', function () {

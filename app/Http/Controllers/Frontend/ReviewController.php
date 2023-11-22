@@ -56,4 +56,9 @@ class ReviewController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function UserComments() {
+        $comments = Review::where('user_id', Auth::user()->id)->latest()->get();
+        return view('frontend.user_comments', compact('comments'));
+    }
 }

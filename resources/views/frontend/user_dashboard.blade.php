@@ -37,7 +37,7 @@
         font-size: 35px;
     }
 </style>
-<div class="row">
+<div class="row mt-3">
     <div class="col-lg-4 sidebar-sticky">
 
         <!-- Sidebar -->
@@ -57,7 +57,7 @@
                         <ul>
                             <li><a href="{{ route('dashboard') }}"><b>🟢 Your Profile </b></a> </li>
                             <li> <a href="{{ route('user.change.password') }}"> <b>🔵 Change Password </b> </a> </li>
-                            <li> <a href=""> <b>🟠 Read Later List </b> </a> </li>
+                            <li> <a href="{{ route('user.comments') }}"> <b>🟠 User Comments </b> </a> </li>
                             <li> <a href="{{ route('user.logout') }}"> <b>🟠 Logout </b> </a> </li>
                         </ul>
                     </div>
