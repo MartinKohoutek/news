@@ -112,7 +112,9 @@
                         <img alt="" src="{{ (!empty($item->news->image)) ? asset($item->news->image) : asset('upload/no_image.jpg') }}">
                         <div class="comment-content">
                             <h4><a href="{{ url('news/details/'.$item->news->id.'/'.$item->news->news_title_slug) }}" style="float: none; margin-bottom: 3px">{{ $item->news->news_title }}</a></h4>
-                            <span><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span><button class="btn btn-sm btn-danger" style="float: right; padding: 0.1rem 0.5rem; margin-top: 3px; cursor: pointer">Delete Comment</button><button class="btn btn-sm btn-primary" style="float: right; margin-right: 5px; padding: 0.1rem 0.5rem; margin-top: 3px; cursor: pointer">Edit Comment</button>
+                            <span><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                            <a class="btn btn-sm btn-danger" style="float: right; padding: 0.1rem 0.5rem; margin-top: 3px; cursor: pointer; color: white">Delete Comment</a>
+                            <a class="btn btn-sm btn-primary" style="float: right; margin-right: 5px; padding: 0.1rem 0.5rem; margin-top: 3px; cursor: pointer; color: white">Edit Comment</a>
                             <p>{!! $item->comment !!}</p>
                         </div>
                     </div>
