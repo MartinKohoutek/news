@@ -72,4 +72,20 @@ class ReviewController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function EditComment($id) {
+        $comment = Review::findOrFail($id);
+        return view('frontend.user_edit_comment', compact('comment'));
+    }
+
+    public function UpdateComment(Request $request) {
+        Review::findOrFail($request->id)->update(['comment' => $request->comment]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Comment Updated Successfully!',
+        ];
+
+        return redirect()->route('user.comments')->with($notification);
+    }
 }

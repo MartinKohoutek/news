@@ -98,37 +98,26 @@
         </div>
 
     </div>
-    <div class="col-lg-8">
-        <!-- comment area box -->
-        <div class="comment-area-box">
-            <div class="title-section">
-                <h1><span>{{ count($comments) }} {{ count($comments) == 1 ? 'Comment' : 'Comments' }}</span></h1>
-            </div>
-            @if (count($comments) > 0)
-            <ul class="comment-tree">
-                @foreach ($comments as $item)
-                <li>
-                    <div class="comment-box">
-                        <img alt="" src="{{ (!empty($item->news->image)) ? asset($item->news->image) : asset('upload/no_image.jpg') }}">
-                        <div class="comment-content">
-                            <h4><a href="{{ url('news/details/'.$item->news->id.'/'.$item->news->news_title_slug) }}" style="float: none; margin-bottom: 3px">{{ $item->news->news_title }}</a></h4>
-                            @if ($item->status == 1)
-                            <span><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}, <span class="text-success">Comment Approved</span></span>
-                            @else
-                            <span><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}, <span class="text-warning">Waiting for Approve</span></span>
-                            @endif
-                            <a href="{{ route('delete.comment', $item->id) }}" id="delete" class="btn btn-sm btn-danger" style="float: right; padding: 0.1rem 0.5rem; margin-top: 3px; cursor: pointer; color: white">Delete Comment</a>
-                            <a href="{{ route('edit.comment', $item->id) }}" class="btn btn-sm btn-primary" style="float: right; margin-right: 5px; padding: 0.1rem 0.5rem; margin-top: 3px; cursor: pointer; color: white">Edit Comment</a>
-                            <p>{!! $item->comment !!}</p>
-                        </div>
-                    </div>
-                </li>
-                @endforeach
-            </ul>
-            @else
-            <p class="mb-5">The are no comments for this article yet!</p>
-            @endif
+    <div class="col-lg-8 sidebar-sticky">
+    <div class="contact-form-box">
+        <div class="title-section">
+            <h1><span>Update a Comment</span> <span class="email-not-published">Your email address will not be published.</span></h1>
         </div>
+        <form id="comment-form" method="post" action="{{ route('update.comment') }}">
+            @csrf
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">{{ session('status') }}</div>
+            @elseif (session('error'))
+            <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+            @endif
+            <input type="hidden" name="id" value="{{ $comment->id }}">
+            <label for="comment">Comment</label>
+            <textarea id="comment" name="comment" class="@error('comment') is-invalid @enderror">{{ $comment->comment }}</textarea>
+            <button type="submit" id="submit-contact" style="cursor: pointer;">
+                <i class="fa fa-comment"></i> Update Comment
+            </button>
+        </form>
+    </div>
     </div>
 </div>
 @endsection
