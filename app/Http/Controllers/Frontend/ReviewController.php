@@ -24,4 +24,36 @@ class ReviewController extends Controller
 
         return back()->with('status', 'Comment will be approved by Admin');
     }
+
+    public function PendingReview() {
+        $reviews = Review::where('status', 0)->latest()->get();
+        return view('backend.review.pending_review', compact('reviews'));
+    }
+
+    public function ApproveReview($id) {
+        Review::where('id', $id)->update(['status' => 1]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Review Approved Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function ApprovedReview() {
+        $reviews = Review::where('status', 1)->latest()->get();
+        return view('backend.review.approved_review', compact('reviews'));
+    }
+
+    public function DeleteReview($id) {
+        Review::findOrFail($id)->delete();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Review Deleted Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

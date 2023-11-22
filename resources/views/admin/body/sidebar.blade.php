@@ -119,17 +119,17 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-label">Pages</li>
+        <li class="menu-label">Comments</li>
         <li>
             <a class="has-arrow" href="javascript:;">
                 <div class="parent-icon"><i class="bx bx-lock"></i>
                 </div>
-                <div class="menu-title">Authentication</div>
+                <div class="menu-title">Comments</div>
             </a>
             <ul>
-                <li> <a href="authentication-signin.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign In</a>
+                <li> <a href="{{ route('pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Pending Reviews</a>
                 </li>
-                <li> <a href="authentication-signup.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign Up</a>
+                <li> <a href="{{ route('approved.review') }}"><i class="bx bx-right-arrow-alt"></i>Approved Reviews</a>
                 </li>
             </ul>
         </li>

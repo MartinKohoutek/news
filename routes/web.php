@@ -134,6 +134,13 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/update/live/tv', 'UpdateLiveTv')->name('update.live.tv');
         Route::post('/store/live/tv', 'StoreLiveTv')->name('store.live.tv');
     });
+
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/pending/review', 'PendingReview')->name('pending.review');
+        Route::get('/approve/review/{id}', 'ApproveReview')->name('approve.review');
+        Route::get('/approved/review', 'ApprovedReview')->name('approved.review');
+        Route::get('/delete/review/{id}', 'DeleteReview')->name('delete.review');
+    });
 });
 
 Route::controller(NewsPostController::class)->group(function(){
