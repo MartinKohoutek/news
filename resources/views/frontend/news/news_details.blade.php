@@ -117,67 +117,27 @@
             </div>
             <!-- End author-profile -->
 
+            @php
+                $comments = App\Models\Review::where('news_id', $news->id)->where('status', 1)->latest()->get();
+            @endphp
             <!-- comment area box -->
             <div class="comment-area-box">
                 <div class="title-section">
-                    <h1><span>5 Comments</span></h1>
+                    <h1><span>{{ count($comments) }} {{ count($comments) == 1 ? 'Comment' : 'Comments' }}</span></h1>
                 </div>
                 <ul class="comment-tree">
+                    @foreach ($comments as $item)
                     <li>
                         <div class="comment-box">
-                            <img alt="" src="upload/users/avatar3.jpg">
+                            <img alt="" src="{{ (!empty($item->user->photo)) ? asset('upload/user_images/'.$item->user->photo) : asset('upload/no_image.jpg') }}">
                             <div class="comment-content">
-                                <h4>Fiona Herrerez <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                                <span><i class="fa fa-clock-o"></i>27 Jann 2018 at 8:57 pm</span>
-                                <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam. </p>
+                                <h4>{{ $item->user->name }}</h4>
+                                <span><i class="fa fa-clock-o"></i>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                                <p>{!! $item->comment !!}</p>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="comment-box">
-                            <img alt="" src="upload/users/avatar1.jpg">
-                            <div class="comment-content">
-                                <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                                <span><i class="fa fa-clock-o"></i>27 Jann 2018 at 8:57 pm</span>
-                                <p>Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. </p>
-                            </div>
-                        </div>
-                        <ul class="depth">
-                            <li>
-                                <div class="comment-box">
-                                    <img alt="" src="upload/users/avatar2.jpg">
-                                    <div class="comment-content">
-                                        <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                                        <span><i class="fa fa-clock-o"></i>27 Jann 2018 at 8:57 pm</span>
-                                        <p>CNullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non. </p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <div class="comment-box">
-                            <img alt="" src="upload/users/avatar4.jpg">
-                            <div class="comment-content">
-                                <h4>John Doe <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                                <span><i class="fa fa-clock-o"></i>27 Jann 2018 at 8:57 pm</span>
-                                <p>Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscing risus a sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu. Ut scelerisque hendrerit tellus. Integer sagittis. </p>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="comment-box">
-                            <img alt="" src="upload/users/avatar5.jpg">
-                            <div class="comment-content">
-                                <h4>Maria Lilly <a href="#"><i class="fa fa-comment-o"></i>Reply</a></h4>
-                                <span><i class="fa fa-clock-o"></i>27 Jann 2018 at 8:57 pm</span>
-                                <p>Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel. </p>
-                            </div>
-                        </div>
-                    </li>
-
+                    @endforeach
                 </ul>
             </div>
             <!-- End comment area box -->
@@ -192,6 +152,11 @@
                 </div>
                 <form id="comment-form" method="post" action="{{ route('store.review') }}">
                     @csrf
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">{{ session('status') }}</div>
+                    @elseif (session('error'))
+                    <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+                    @endif
                     <input type="hidden" name="news_id" value="{{ $news->id }}">
                     <div class="row">
                         <div class="col-md-6">
