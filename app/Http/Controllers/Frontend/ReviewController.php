@@ -61,4 +61,15 @@ class ReviewController extends Controller
         $comments = Review::where('user_id', Auth::user()->id)->latest()->get();
         return view('frontend.user_comments', compact('comments'));
     }
+
+    public function DeleteComment($id) {
+        Review::findOrFail($id)->delete();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Comment Deleted Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

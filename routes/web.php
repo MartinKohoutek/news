@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function(){
 
     Route::controller(ReviewController::class)->group(function(){
         Route::get('/user/comments', 'UserComments')->name('user.comments');
+        Route::get('/delete/comment/{id}', 'DeleteComment')->name('delete.comment');
     });
 });
 
