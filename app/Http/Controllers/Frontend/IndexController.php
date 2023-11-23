@@ -61,4 +61,12 @@ class IndexController extends Controller
         $news = NewsPost::where('post_date', $date)->latest()->paginate(5);
         return view('frontend.news.news_search_by_date', compact('news', 'date'));
     }
+
+    public function NewsSearch(Request $request) {
+        $request->validate(['search' => 'required']);
+        $searchTerm = $request->search;
+        $news = NewsPost::where('status', '1')->where('news_title', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('news_details', 'LIKE', '%'.$request->search.'%')->paginate(5)->withQueryString();
+        return view('frontend.news.search', compact('news', 'searchTerm'));
+    }
 }

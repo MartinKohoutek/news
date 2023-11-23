@@ -167,6 +167,7 @@ Route::controller(IndexController::class)->group(function(){
     Route::get('/news/subcategory/{id}/{slug}', 'NewsSubCategory')->name('news.subcategory');
     Route::get('/news/archive', 'NewsArchive')->name('news.archive');
     Route::post('/search/by/date', 'SearchByDate')->name('search.by.date');
+    Route::get('/news/search', 'NewsSearch')->name('news.search');
 });
 
 Route::controller(ReviewController::class)->group(function(){

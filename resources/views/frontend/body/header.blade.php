@@ -13,8 +13,9 @@
                     </a>
                 </div>
                 <div class="col-sm-7">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search for..." aria-label="Search">
+                    <form class="form-inline" method="get" action="{{ route('news.search') }}">
+                        <!-- @csrf -->
+                        <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search for..." aria-label="Search">
                         <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                     </form>
                     <ul class="info-list right-align">
