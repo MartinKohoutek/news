@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -18,6 +19,9 @@ class RoleController extends Controller
     }
 
     public function StorePermission(Request $request) {
+        $request->validate([
+            'name' => 'required|unique:permissions,name',
+        ]);
         Permission::create([
             'name' => $request->name,
             'group_name' => $request->group_name,

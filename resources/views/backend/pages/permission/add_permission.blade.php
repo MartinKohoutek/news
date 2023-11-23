@@ -29,8 +29,8 @@
                         @csrf
                         <div class="col-md-6 form-group">
                             <label for="name" class="form-label">Permission Name</label>
-                            <input type="text" name="name" class="form-control @error('subcategory_name') is-invalid @enderror" id="name">
-                            @error('subcategory_name')
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name">
+                            @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
