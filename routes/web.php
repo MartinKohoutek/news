@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LiveTvController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SeoSettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VideoGalleryController;
@@ -153,6 +154,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::controller(SeoSettingController::class)->group(function(){
         Route::get('/seo/setting', 'SeoSiteSetting')->name('seo.setting');
         Route::post('/update/seo/setting/{id}', 'UpdateSeoSetting')->name('update.seo.setting');
+    });
+
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
     });
 });
 
