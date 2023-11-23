@@ -10,7 +10,7 @@
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Add Permission</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Permission</li>
                 </ol>
             </nav>
         </div>
@@ -23,13 +23,14 @@
                     <div class="card-title d-flex align-items-center">
                         <div><i class="bx bxs-user me-1 font-22 text-primary"></i>
                         </div>
-                        <h5 class="mb-0 text-primary">Add Permission</h5>
+                        <h5 class="mb-0 text-primary">Edit Permission</h5>
                     </div>
-                    <form action="{{ route('store.permission') }}" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('update.permission') }}" method="post" class="row g-3" id="myForm">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $permission->id }}">
                         <div class="col-md-6 form-group">
                             <label for="name" class="form-label">Permission Name</label>
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name">
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ $permission->name }}">
                             @error('name')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -38,23 +39,22 @@
                         <div class="col-md-6 form-group">
                             <label for="group_name" class="form-label">Group Name</label>
                             <select name="group_name" class="form-select mb-3" aria-label="Select Category" id="group_name">
-									<option selected="" disabled>Choose Group...</option>
-									<option value="category">Category</option>
-									<option value="subcategory">SubCategory</option>
-									<option value="news">News</option>
-									<option value="banner">Banner</option>
-									<option value="photo">Photo</option>
-									<option value="video">Video</option>
-									<option value="live">Live</option>
-									<option value="review">Review</option>
-									<option value="seo">SEO</option>
-									<option value="admin">Admin Settings</option>
-									<option value="role">Roles & Permissions</option>
+									<option value="category" {{ $permission->group_name == 'category' ? 'selected' : ''}}>Category</option>
+									<option value="subcategory" {{ $permission->group_name == 'subcategory' ? 'selected' : ''}}>SubCategory</option>
+									<option value="news" {{ $permission->group_name == 'news' ? 'selected' : ''}}>News</option>
+									<option value="banner" {{ $permission->group_name == 'banner' ? 'selected' : ''}}>Banner</option>
+									<option value="photo" {{ $permission->group_name == 'photo' ? 'selected' : ''}}>Photo</option>
+									<option value="video" {{ $permission->group_name == 'video' ? 'selected' : ''}}>Video</option>
+									<option value="live" {{ $permission->group_name == 'live' ? 'selected' : ''}}>Live</option>
+									<option value="review" {{ $permission->group_name == 'review' ? 'selected' : ''}}>Review</option>
+									<option value="seo" {{ $permission->group_name == 'seo' ? 'selected' : ''}}>SEO</option>
+									<option value="admin" {{ $permission->group_name == 'admin' ? 'selected' : ''}}>Admin Settings</option>
+									<option value="role" {{ $permission->group_name == 'role' ? 'selected' : ''}}>Roles & Permissions</option>
 								</select>
                         </div>
                         
                         <div class="col-12">
-                            <input type="submit" class="btn btn-primary px-5" value="Add Permission" />
+                            <input type="submit" class="btn btn-primary px-5" value="Update Permission" />
                         </div>
                     </form>
                 </div>

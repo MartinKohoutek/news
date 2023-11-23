@@ -34,4 +34,37 @@ class RoleController extends Controller
 
         return redirect()->route('all.permission')->with($notification);
     }
+
+    public function EditPermission($id) {
+        $permission = Permission::findOrFail($id);
+        return view('backend.pages.permission.edit_permission', compact('permission'));
+    }
+
+    public function UpdatePermission(Request $request) {
+        $request->validate([
+            'name' => 'required',
+        ]);
+        Permission::findOrFail($request->id)->update([
+            'name' => $request->name,
+            'group_name' => $request->group_name,
+        ]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Permission Updated Successfully!',
+        ];
+
+        return redirect()->route('all.permission')->with($notification);
+    }
+
+    public function DeletePermission($id) {
+        Permission::findOrFail($id)->delete();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Permission Deleted Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }
