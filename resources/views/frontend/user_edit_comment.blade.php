@@ -1,5 +1,8 @@
 @extends('frontend.home_master')
 @section('home')
+@section('title')
+SportNews | Online News Portal - Edit Comment
+@endsection
 <link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
 <style>
     .contact-wrpp {

@@ -4,7 +4,7 @@
 <html lang="en" class="no-js">
 
 <head>
-    <title>SportNews</title>
+    <title>@yield('title')</title>
 
     <meta charset="utf-8">
 

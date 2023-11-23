@@ -1,5 +1,8 @@
 @extends('frontend.home_master')
 @section('home')
+@section('title')
+SportNews | Category - {{ $cat->category_name}}
+@endsection
 <div class="container" style="padding-top: 30px;">
     <div class="row">
         <div class="col-lg-8">

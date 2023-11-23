@@ -1,5 +1,8 @@
 @extends('frontend.home_master')
 @section('home')
+@section('title')
+SportNews | {{ $news->news_title }}
+@endsection
 <style>
     .contact-form-box #comment-form input[type="text"] {
     background-color: #dcdcdc;

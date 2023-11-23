@@ -1,5 +1,8 @@
 @extends('frontend.home_master')
 @section('home')
+@section('title')
+SportNews | Online News Portal - Search By Date
+@endsection
 <div class="container">
     <div class="row">
         <div class="col-lg-8">

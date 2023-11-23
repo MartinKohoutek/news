@@ -1,6 +1,10 @@
 @extends('frontend.home_master')
 @section('home')
 
+@section('title')
+SportNews | Online News Portal
+@endsection
+
 @include('frontend.section.breaking_news')
 @include('frontend.body.heading_news')
 

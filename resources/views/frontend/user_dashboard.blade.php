@@ -1,5 +1,8 @@
 @extends('frontend.home_master')
 @section('home')
+@section('title')
+    SportNews | Online News Portal - User Dashboard
+@endsection
 <link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <style>
