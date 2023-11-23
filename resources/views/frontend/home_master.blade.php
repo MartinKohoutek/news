@@ -10,6 +10,13 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    @php
+        $seo = App\Models\SeoSetting::find(1);
+    @endphp
+    <meta name="keywords" content="{{ $seo->meta_keyword }}">
+    <meta name="description" content="{{ $seo->meta_description }}">
+    <meta name="title" content="{{ $seo->meta_title }}">
+    <meta name="author" content="{{ $seo->meta_author }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/modernmag-assets.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css') }}">

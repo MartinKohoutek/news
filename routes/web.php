@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\LiveTvController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
+use App\Http\Controllers\Backend\SeoSettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -147,6 +148,11 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/approve/review/{id}', 'ApproveReview')->name('approve.review');
         Route::get('/approved/review', 'ApprovedReview')->name('approved.review');
         Route::get('/delete/review/{id}', 'DeleteReview')->name('delete.review');
+    });
+
+    Route::controller(SeoSettingController::class)->group(function(){
+        Route::get('/seo/setting', 'SeoSiteSetting')->name('seo.setting');
+        Route::post('/update/seo/setting/{id}', 'UpdateSeoSetting')->name('update.seo.setting');
     });
 });
 
