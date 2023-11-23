@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\Subcategory;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -58,15 +59,21 @@ class IndexController extends Controller
 
     public function SearchByDate(Request $request) {
         $date = (new DateTime($request->date))->format('d-m-Y');
-        $news = NewsPost::where('post_date', $date)->latest()->paginate(5)->withQueryString();
+        $news = NewsPost::where('post_date', $date)->where('status', 1)->latest()->paginate(5)->withQueryString();
         return view('frontend.news.news_search_by_date', compact('news', 'date'));
     }
 
     public function NewsSearch(Request $request) {
         $request->validate(['search' => 'required']);
         $searchTerm = $request->search;
-        $news = NewsPost::where('status', '1')->where('news_title', 'LIKE', '%'.$request->search.'%')
-            ->orWhere('news_details', 'LIKE', '%'.$request->search.'%')->paginate(5)->withQueryString();
+        $news = NewsPost::where('status', 1)->where(function($query) use($request) {$query->where('news_title', 'LIKE', '%'.$request->search.'%')
+            ->orWhere('news_details', 'LIKE', '%'.$request->search.'%');})->paginate(5)->withQueryString();
         return view('frontend.news.search', compact('news', 'searchTerm'));
+    }
+
+    public function ReporterAllNews($id) {
+        $reporter = User::findOrFail($id);
+        $news = NewsPost::where('user_id', $id)->where('status', 1)->latest()->paginate(5);
+        return view('frontend.reporter.news_by_reporter', compact('news', 'reporter'));
     }
 }

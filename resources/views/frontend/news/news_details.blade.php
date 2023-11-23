@@ -17,8 +17,8 @@ SportNews | {{ $news->news_title }}
             <div class="single-post">
                 <h1>{{ $news->news_title }}</h1>
                 <ul class="post-tags">
-                    <li><i class="lnr lnr-user"></i>by <a href="#">{{ $news->user->name }}</a></li>
-                    <li><a href="#"><i class="lnr lnr-book"></i><span>20 comments</span></a></li>
+                    <li><i class="lnr lnr-user"></i>by <a href="{{ route('reporter.all.news', $news->user_id) }}">{{ $news->user->name }}</a></li>
+                    <li><a href="{{ url('#comments') }}"><i class="lnr lnr-book"></i><span>{{ count(App\Models\Review::where('news_id', $news->id)->where('status', 1)->get()) }} comments</span></a></li>
                     <li><i class="lnr lnr-eye"></i>{{ $news->view_count }} View{{ $news->view_count == 1 ? '' : 's' }}</li>
                     <li><i class="lnr lnr-history"></i>{{ $news->created_at->format('l d.m.Y') }}</li>
                 </ul>
@@ -124,7 +124,7 @@ SportNews | {{ $news->news_title }}
                 $comments = App\Models\Review::where('news_id', $news->id)->where('status', 1)->latest()->get();
             @endphp
             <!-- comment area box -->
-            <div class="comment-area-box">
+            <div class="comment-area-box" id="comments">
                 <div class="title-section">
                     <h1><span>{{ count($comments) }} {{ count($comments) == 1 ? 'Comment' : 'Comments' }}</span></h1>
                 </div>

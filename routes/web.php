@@ -168,6 +168,7 @@ Route::controller(IndexController::class)->group(function(){
     Route::get('/news/archive', 'NewsArchive')->name('news.archive');
     Route::get('/search/by/date', 'SearchByDate')->name('search.by.date');
     Route::get('/news/search', 'NewsSearch')->name('news.search');
+    Route::get('/reporter/all/news/{id}', 'ReporterAllNews')->name('reporter.all.news');
 });
 
 Route::controller(ReviewController::class)->group(function(){
