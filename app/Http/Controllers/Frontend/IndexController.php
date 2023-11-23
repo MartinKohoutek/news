@@ -58,7 +58,7 @@ class IndexController extends Controller
 
     public function SearchByDate(Request $request) {
         $date = (new DateTime($request->date))->format('d-m-Y');
-        $news = NewsPost::where('post_date', $date)->latest()->paginate(5);
+        $news = NewsPost::where('post_date', $date)->latest()->paginate(5)->withQueryString();
         return view('frontend.news.news_search_by_date', compact('news', 'date'));
     }
 

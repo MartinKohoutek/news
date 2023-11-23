@@ -33,8 +33,8 @@
         <div class="widget">
             <h1>Old News</h1>
 
-            <form class="old-date" action="{{ route('search.by.date') }}" method="post">
-                @csrf
+            <form class="old-date" action="{{ route('search.by.date') }}" method="get">
+                <!-- @csrf -->
                 <input type="date" id="olddate" placeholder="Select Date" autocomplete="off" name="date" class="form-control" style="width: 75%;">
                 <input type="submit" value="Search" class="btn">
             </form>
