@@ -25,7 +25,7 @@
                         </div>
                         <h5 class="mb-0 text-primary">Add Roles In Permission</h5>
                     </div>
-                    <form action="{{ route('store.permission') }}" method="post" class="row g-3" id="myForm">
+                    <form action="{{ route('store.roles.permission') }}" method="post" class="row g-3" id="myForm">
                         @csrf
                         <div class="col-md-6 form-group">
                             <label for="role" class="form-label">All Roles</label>
@@ -41,12 +41,12 @@
                             <label class="form-check-label" for="selectAll">Select All Permissions</label>
                         </div>
                         <hr>
-                        @foreach ($permissionGroups as $group)
+                        @foreach ($permissionGroups as $key => $group)
                         <div class="row mb-2">
                             <div class="col-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">{{ $group->group_name }}</label>
+                                    <input class="form-check-input" type="checkbox" value="" id="group{{ $key }}">
+                                    <label class="form-check-label" for="group{{ $key }}">{{ $group->group_name }}</label>
                                 </div>
                             </div>
                             <div class="col-9">
@@ -55,21 +55,14 @@
                                 @endphp
                                 @foreach ($permissions as $permission)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">{{ $permission->name }}</label>
+                                    <input class="form-check-input" name="permission[]" type="checkbox" value="{{ $permission->id }}" id="permission{{ $permission->id }}">
+                                    <label class="form-check-label" for="permission{{ $permission->id }}">{{ $permission->name }}</label>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
                         @endforeach
-                        <div class="col-md-6 form-group">
-                            <label for="name" class="form-label">Permission Name</label>
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name">
-                            @error('name')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                       
+            
                        
                         
                         <div class="col-12">

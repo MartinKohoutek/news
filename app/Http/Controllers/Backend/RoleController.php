@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -133,5 +134,24 @@ class RoleController extends Controller
         $permissionGroups = User::getPermissionGroups();
 
         return view('backend.pages.roles.add_roles_permission', compact('roles', 'permissions', 'permissionGroups'));
+    }
+
+    public function StoreRolesPermission(Request $request) {
+        $data = [];
+        $permissions = $request->permission;
+
+        foreach ($permissions as $item) {
+            $data['role_id'] = $request->role;
+            $data['permission_id'] = $item;
+
+            DB::table('role_has_permissions')->insert($data);
+        }
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Role in Permission Inserted Successfully!',
+        ];
+
+        return redirect()->route('all.roles')->with($notification);
     }
 }
