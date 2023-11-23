@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -92,5 +91,38 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.roles')->with($notification);
+    }
+
+    public function EditRoles($id) {
+        $role = Role::findOrFail($id);
+        return view('backend.pages.roles.edit_roles', compact('role'));
+    }
+
+    public function UpdateRoles(Request $request) {
+        $request->validate([
+            'name' => 'required|unique:roles,name',
+        ]);
+
+        Role::findOrFail($request->id)->update([
+            'name' => $request->name,
+        ]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Role Updated Successfully!',
+        ];
+
+        return redirect()->route('all.roles')->with($notification);
+    }
+
+    public function DeleteRoles($id) {
+        Role::findOrFail($id)->delete();
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Role Deleted Successfully!',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

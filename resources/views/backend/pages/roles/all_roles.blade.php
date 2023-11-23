@@ -37,8 +37,8 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
-                                <a href="{{ route('edit.permission', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
-                                <a href="{{ route('delete.permission', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
+                                <a href="{{ route('edit.roles', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
+                                <a href="{{ route('delete.roles', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
                             </td>
                         </tr>
                         @endforeach
