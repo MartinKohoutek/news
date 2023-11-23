@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -66,5 +67,30 @@ class RoleController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function AllRoles() {
+        $roles = Role::all();
+        return view('backend.pages.roles.all_roles', compact('roles'));
+    }
+
+    public function AddRoles() {
+        return view('backend.pages.roles.add_roles');
+    }
+
+    public function StoreRoles(Request $request) {
+        $request->validate([
+            'name' => 'required|unique:roles,name',
+        ]);
+        Role::create([
+            'name' => $request->name,
+        ]);
+
+        $notification = [
+            'alert-type' => 'success',
+            'message' => 'Role Created Successfully!',
+        ];
+
+        return redirect()->route('all.roles')->with($notification);
     }
 }
