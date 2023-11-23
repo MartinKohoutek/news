@@ -96,7 +96,7 @@ SportNews | {{ $news->news_title }}
                 <div class="author-box">
                     <img alt="" src="{{ asset('upload/admin_images/'.$news->user->photo) }}">
                     <div class="author-content">
-                        <h4>{{ $news->user->name }}<a href="#">{{ $countAuthorPosts }} posts</a></h4>
+                        <h4>{{ $news->user->name }}<a href="{{ url('reporter/all/news/'.$news->user->id) }}">{{ $countAuthorPosts }} posts</a></h4>
                         <p>{!! $news->user->description !!}</p>
                         <ul class="author-social">
                             @if ($news->user->facebook)

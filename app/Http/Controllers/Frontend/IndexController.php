@@ -26,7 +26,7 @@ class IndexController extends Controller
             ->latest()
             ->limit(6)
             ->get();
-        $countAuthorPosts = NewsPost::where('user_id', $news->user_id)->count();
+        $countAuthorPosts = NewsPost::where('status', 1)->where('user_id', $news->user_id)->count();
 
         // $latestNews = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
         // $popularNews = NewsPost::orderBy('view_count', 'DESC')->limit(8)->get();

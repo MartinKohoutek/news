@@ -10,6 +10,32 @@ SportNews | Online News Portal - Posts By {{ $reporter->name }}
             <div class="archive-box">
                 <h1>Posts By {{ $reporter->name }}</h1>
             </div>
+            <div class="author-profile">
+                <div class="author-box">
+                    <img alt="" src="{{ asset('upload/admin_images/'.$reporter->photo) }}">
+                    <div class="author-content">
+                        <h4>{{ $reporter->name }}<a href="{{ url('/reporter/all/news/'.$reporter->id) }}">{{ count(App\Models\NewsPost::where('status', 1)->where('user_id', $reporter->id)->get()) }} posts</a></h4>
+                        <p>{!! $reporter->description !!}</p>
+                        <ul class="author-social">
+                            @if ($reporter->facebook)
+                            <li><a href="{{ url($reporter->facebook) }}" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                            @endif
+                            @if ($reporter->googleplus)
+                            <li><a href="{{ url($reporter->googleplus ) }}" class="google"><i class="fa fa-google-plus"></i></a></li>
+                            @endif
+                            @if ($reporter->twitter)
+                            <li><a href="{{ url($reporter->twitter) }}" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                            @endif
+                            @if ($reporter->instagram)
+                            <li><a href="{{ url($reporter->instagram) }}" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                            @endif
+                            @if ($reporter->linkedin)
+                            <li><a href="{{ url($reporter->linkedin) }}" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <!-- End archive box -->
             <!-- Posts-block -->
             <div class="posts-block">
