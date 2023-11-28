@@ -47,6 +47,15 @@
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control" id="password">
                         </div>
+                        <div class="col-md-6 form-group">
+                            <label for="role" class="form-label">All Roles</label>
+                            <select name="role" class="form-select mb-3" aria-label="Select Role" id="role">
+									<option selected="" disabled>Choose Role...</option>
+                                    @foreach ($roles as $role)
+									<option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+								</select>
+                        </div>
                        
                         <div class="col-12">
                             <input type="submit" class="btn btn-primary px-5" value="Add Admin User" />

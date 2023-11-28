@@ -40,6 +40,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -57,6 +58,11 @@
                                 </div>
                             </td>
                             <td>
+                                @foreach ($item->roles as $role)
+                                    <span class="badge rounded-pill bg-danger">{{ $role->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
                                 <a href="{{ route('edit.admin', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
                                 <a href="{{ route('delete.admin', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
                             </td>
@@ -71,6 +77,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

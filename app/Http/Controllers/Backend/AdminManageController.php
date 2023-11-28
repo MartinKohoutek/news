@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminManageController extends Controller
 {
@@ -15,7 +16,8 @@ class AdminManageController extends Controller
     }
 
     public function AddAdmin() {
-        return view('backend.admin.add_admin');
+        $roles = Role::all();
+        return view('backend.admin.add_admin', compact('roles'));
     }
 
     public function StoreAdmin(Request $request) {
@@ -28,6 +30,10 @@ class AdminManageController extends Controller
         $user->role = 'admin';
         $user->status = 'inactive';
         $user->save();
+
+        if ($request->role) {
+            $user->assignRole($request->role);
+        }
 
         $notification = [
             'alert-type' => 'success',
