@@ -3,19 +3,19 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Reviews</div>
+        <div class="breadcrumb-title pe-3">Comments</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Approved Reviews <span class="badge bg-primary">{{ count($reviews) }}</span></li>
+                    <li class="breadcrumb-item active" aria-current="page">Approved Comments <span class="badge bg-primary">{{ count($reviews) }}</span></li>
                 </ol>
             </nav>
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.admin') }}" class="btn btn-primary">Pending Reviews</a>
+                <a href="{{ route('pending.review') }}" class="btn btn-primary">Pending Comments</a>
             </div>
         </div>
     </div>

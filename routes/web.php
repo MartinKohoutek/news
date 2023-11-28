@@ -71,7 +71,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         });
     });
 
-    Route::middleware('permission::subcategory.menu')->group(function(){
+    Route::middleware('permission:subcategory.menu')->group(function(){
         Route::controller(SubCategoryController::class)->group(function(){
             Route::get('/all/subcategory', 'AllSubCategory')->name('all.subcategory')->middleware('permission:subcategory.list');
             Route::get('/add/subcategory', 'AddSubCategory')->name('add.subcategory')->middleware('permission:subcategory.add');
