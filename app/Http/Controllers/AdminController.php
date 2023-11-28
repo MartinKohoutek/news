@@ -93,4 +93,30 @@ class AdminController extends Controller
 
         return back()->with('status', 'Password Changed Successfully!');
     }
+
+    public function MarkNotificationAsRead(Request $request, $id) {
+        $user = Auth::user();
+        $notification = $user->notifications()->where('id', $id)->first();
+        if ($notification) {
+            $notification->markAsRead();
+        }
+
+        return response()->json(['count' => $user->unreadNotifications()->count()]);
+    }
+
+    public function MarkAllAsRead() {
+        $user = Auth::user();
+        $notifications = $user->unreadNotifications()->get();
+
+        foreach ($notifications as $notification) {
+            $notification->markAsRead();
+        }
+
+        $notification = [
+            'message' => 'All Notification Marked As Read!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

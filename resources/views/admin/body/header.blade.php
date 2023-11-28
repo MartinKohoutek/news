@@ -16,66 +16,60 @@
                         </a>
                     </li>
                    
+                    @php
+                        $reviewCount = Auth::user()->unreadNotifications()->count();
+                    @endphp
                     <li class="nav-item dropdown dropdown-large">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                            @if ($reviewCount > 0)
+                            <span class="alert-count" id="notificationCount">{{ $reviewCount }}</span>
+                            @endif
                             <i class='bx bx-bell'></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:;">
+                            <!-- <a href="javascript:;"> -->
                                 <div class="msg-header">
                                     <p class="msg-header-title">Notifications</p>
-                                    <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                    <p class="msg-header-clear ms-auto"><a href="{{ route('mark-all-as-read') }}">Marks all as read</a></p>
                                 </div>
-                            </a>
+                            <!-- </a> -->
                             <div class="header-notifications-list">
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-                                                    ago</span></h6>
-                                            <p class="msg-info">5 new user registered</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">New Orders <span class="msg-time float-end">2 min
-                                                    ago</span></h6>
-                                            <p class="msg-info">You have recived new orders</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="notify bg-light-success text-success"><i class="bx bx-file"></i>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min
-                                                    ago</span></h6>
-                                            <p class="msg-info">The pdf files generated</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item" href="javascript:;">
+                                @php
+                                    $user = Auth::user();
+                                @endphp
+                                @forelse ($user->notifications as $notification)
+                                @if (is_null($notification->read_at) && $notification->type == 'App\Notifications\ReviewNotification')
+                                <a class="dropdown-item" href="{{ route('pending.review') }}" onclick="markNotificationAsRead('{{ $notification->id }}')">
                                     <div class="d-flex align-items-center">
                                         <div class="notify bg-light-warning text-warning"><i class="bx bx-send"></i>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h6 class="msg-name">Time Response <span class="msg-time float-end">28 min
-                                                    ago</span></h6>
-                                            <p class="msg-info">5.1 min avarage time response</p>
+                                            <h6 class="msg-name">New Comment<span class="msg-time float-end">{{ Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span></h6>
+                                            <p class="msg-info">{{ $notification->data['message'] }}</p>
                                         </div>
                                     </div>
-                                </a>
+                                </a> 
+                                @endif
+                                @if (is_null($notification->read_at) && $notification->type == 'App\Notifications\RegisterNotification')
+                                <a class="dropdown-item" href="{{ route('pending.review') }}" onclick="markNotificationAsRead('{{ $notification->id }}')">
+                                    <div class="d-flex align-items-center">
+                                        <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="msg-name">New User<span class="msg-time float-end">{{ Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</span></h6>
+                                            <p class="msg-info">{{ $notification->data['message'] }}</p>
+                                        </div>
+                                    </div>
+                                </a> 
+                                @endif
+                                @empty
+                                    
+                                @endforelse
+                                
                             </div>
-                            <a href="javascript:;">
+                            <!-- <a href="javascript:;">
                                 <div class="text-center msg-footer">View All Notifications</div>
-                            </a>
+                            </a> -->
                         </div>
                     </li>
                    
@@ -113,3 +107,23 @@
         </nav>
     </div>
 </header>
+
+<script>
+    function markNotificationAsRead(notificationId) {
+        fetch('/mark-notification-as-read/' + notificationId, {
+            method: 'post',
+            headers: {
+                'Content-Type' : 'application/json',
+                'X-CSRF-TOKEN' : '{{ csrf_token() }}',
+            },
+            body: JSON.stringify({}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('notificationCount').textContent = data.count;
+        })
+        .catch (error => {
+            console.log('Error: ', error);
+        });
+    }
+</script>

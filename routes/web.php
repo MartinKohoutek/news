@@ -15,7 +15,6 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Models\VideoGallery;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +57,9 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::post('/admin/profile/store', 'AdminProfileStore')->name('admin.profile.store');
         Route::get('/admin/change/password', 'AdminChangePassword')->name('admin.change.password');
         Route::post('/admin/update/password', 'AdminUpdatePassword')->name('admin.update.password');
+
+        Route::post('/mark-notification-as-read/{id}', 'MarkNotificationAsRead');
+        Route::get('/mark-all-as-read', 'MarkAllAsRead')->name('mark-all-as-read');
     });
 
     Route::middleware('permission:category.menu')->group(function(){

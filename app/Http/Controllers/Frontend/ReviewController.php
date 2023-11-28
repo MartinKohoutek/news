@@ -4,13 +4,18 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Review;
+use App\Models\User;
+use App\Notifications\ReviewNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class ReviewController extends Controller
 {
     public function StoreReview(Request $request) {
+        $users = User::where('role', 'admin')->get();
+
         $request->validate([
             'comment' => 'required',
         ]);
@@ -22,6 +27,7 @@ class ReviewController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
+        Notification::send($users, new ReviewNotification($request));
         return back()->with('status', 'Comment will be approved by Admin');
     }
 
