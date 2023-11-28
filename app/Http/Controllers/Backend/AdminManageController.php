@@ -45,7 +45,8 @@ class AdminManageController extends Controller
 
     public function EditAdmin($id) {
         $user = User::find($id);
-        return view('backend.admin.edit_admin', compact('user'));
+        $roles = Role::all();
+        return view('backend.admin.edit_admin', compact('user', 'roles'));
     }
 
     public function UpdateAdmin(Request $request, $id) {
@@ -55,8 +56,13 @@ class AdminManageController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = 'admin';
-        $user->status = 'inactive';
+        $user->status = 'active';
         $user->save();
+
+        $user->roles()->detach();
+        if ($request->role) {
+            $user->assignRole($request->role);
+        }
 
         $notification = [
             'alert-type' => 'success',
@@ -67,7 +73,10 @@ class AdminManageController extends Controller
     }
 
     public function DeleteAdmin($id) {
-        User::find($id)->delete();
+        $user = User::find($id);
+        if (!is_null($user)) {
+            $user->delete();
+        }
 
         $notification = [
             'alert-type' => 'success',

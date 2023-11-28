@@ -43,6 +43,15 @@
                             <label for="phone" class="form-label">Phone</label>
                             <input type="text" name="phone" class="form-control" id="phone" value="{{ $user->phone }}">
                         </div>
+                        <div class="col-md-6 form-group">
+                            <label for="role" class="form-label">All Roles</label>
+                            <select name="role" class="form-select mb-3" aria-label="Select Role" id="role">
+									<option selected="" disabled>Choose Role...</option>
+                                    @foreach ($roles as $role)
+									<option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                    @endforeach
+								</select>
+                        </div>
                        
                         <div class="col-12">
                             <input type="submit" class="btn btn-primary px-5" value="Update Admin User" />
