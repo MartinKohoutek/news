@@ -67,17 +67,23 @@
                     </div>
                 </div>
 
+                @php
+                    $posts = App\Models\NewsPost::select('tags')->where('status', 1)->get();
+                    $tags = [];
+                    $posts->each(function ($post) use (&$tags) { 
+                            $tags = array_merge($tags, explode(',', $post->tags));
+                        });
+                    $tags = array_count_values($tags);
+                    arsort($tags);
+                    $tags = array_slice($tags, 0, 10, true);
+                @endphp
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget tags-widget">
                         <h1>Tags</h1>
                         <ul class="tags-list">
-                            <li><a href="#">Football</a></li>
-                            <li><a href="#">Basketball</a></li>
-                            <li><a href="#">Tennis</a></li>
-                            <li><a href="#">Athletic</a></li>
-                            <li><a href="#">Winter Sports</a></li>
-                            <li><a href="#">Handball</a></li>
-                            <li><a href="#">Rugby</a></li>
+                            @foreach ($tags as $key => $tag)
+                            <li><a href="#">{{ $key }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
