@@ -13,11 +13,13 @@
                 </ol>
             </nav>
         </div>
+        @if (Auth::user()->can('photo.add'))
         <div class="ms-auto">
             <div class="btn-group">
                 <a href="{{ route('add.photo.gallery') }}" class="btn btn-primary">Add Photos</a>
             </div>
         </div>
+        @endif
     </div>
     <!--end breadcrumb-->
     <div class="card">
@@ -41,8 +43,12 @@
                             <td>{{ $item->photo_title }}</td>
                             <td>{{ $item->post_date }}</td>
                             <td>
+                                @if (Auth::user->can('photo.edit'))
                                 <a href="{{ route('edit.photo.gallery', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
+                                @endif
+                                @if (Auth::user()->can('photo.delete'))
                                 <a href="{{ route('delete.photo.gallery', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

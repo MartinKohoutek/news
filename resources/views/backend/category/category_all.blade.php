@@ -13,11 +13,13 @@
                 </ol>
             </nav>
         </div>
+        @if (Auth::user()->can('category.add'))
         <div class="ms-auto">
             <div class="btn-group">
                 <a href="{{ route('add.category') }}" class="btn btn-primary">Add Category</a>
             </div>
         </div>
+        @endif
     </div>
     <!--end breadcrumb-->
     <div class="card">
@@ -37,8 +39,12 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $item->category_name }}</td>
                             <td>
+                                @if (Auth::user()->can('category.edit'))
                                 <a href="{{ route('edit.category', $item->id) }}" class="btn btn-primary radius-30">Edit</a>
+                                @endif
+                                @if (Auth::user()->can('category.delete'))
                                 <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger radius-30">Delete</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
