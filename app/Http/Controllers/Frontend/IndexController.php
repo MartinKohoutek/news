@@ -95,4 +95,10 @@ class IndexController extends Controller
         $news = NewsPost::where('user_id', $id)->where('status', 1)->latest()->paginate(5);
         return view('frontend.reporter.news_by_reporter', compact('news', 'reporter'));
     }
+
+    public function NewsByTag($title) {
+        $title = base64_decode($title);
+        $news = NewsPost::where('status', 1)->where('tags', 'LIKE', '%'.$title.'%')->paginate(5);
+        return view('frontend.news.news_by_tag', compact('title', 'news'));
+    }
 }

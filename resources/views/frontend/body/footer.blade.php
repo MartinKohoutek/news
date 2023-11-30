@@ -82,7 +82,7 @@
                         <h1>Tags</h1>
                         <ul class="tags-list">
                             @foreach ($tags as $key => $tag)
-                            <li><a href="#">{{ $key }}</a></li>
+                            <li><a href="{{ route('news.by.tag.title', ['title' => base64_encode($key)]) }}">{{ $key }}</a></li>
                             @endforeach
                         </ul>
                     </div>

@@ -375,125 +375,40 @@ $banners = App\Models\Banner::find(1);
         </div>
 
         <div class="articles-box-style">
+            @php
+                $worldNews = App\Models\NewsPost::where('status', 1)->where('tags', 'LIKE', '%world news%')->paginate(5);
+            @endphp
+            @foreach ($worldNews as $item)
             <div class="news-post article-post">
                 <div class="row">
                     <div class="col-sm-5">
                         <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                                <img src="{{ asset($item->image) }}" alt="">
                             </a>
-                            <a class="category" href="#">Athletic</a>
+                            @if ($item->subcategory_id != null)
+                            <a href="{{ url('/news/subcategory/'.$item->subcategory_id.'/'.$item->subcategory->subcategory_slug) }}" class="category">{{ $item->subcategory->subcategory_name }}</a>
+                            @else
+                            <a href="{{ url('/news/category/'.$item->category_id.'/'.$item->category->category_slug) }}" class="category">{{ $item->category->category_name }}</a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-sm-7">
-                        <h2><a href="single-post.html">The Guardian view on Germany’s coalition deal: Merkel in the balance</a></h2>
+                        <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                         <ul class="post-tags">
-                            <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                            <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                            <li><i class="lnr lnr-user"></i>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
+                            @php
+                                $countComments = App\Models\Review::where('news_id', $item->id)->where('status', 1)->count();
+                            @endphp
+                            <li><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug.'#comments') }}"><i class="lnr lnr-book"></i><span>{{ $countComments }} comments</span></a></li>
                         </ul>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p></p>
                     </div>
                 </div>
             </div>
-            <div class="news-post article-post">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a class="category" href="#">Basketball</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <h2><a href="single-post.html">Philip Dunne, sacked after his NHS remarks, must now face his constituents</a></h2>
-                        <ul class="post-tags">
-                            <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                            <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                        </ul>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="news-post article-post">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a class="category" href="#">Bicycle</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <h2><a href="single-post.html">Cameroon’s heartbreaking struggles are a relic of British colonialism</a></h2>
-                        <ul class="post-tags">
-                            <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                            <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                        </ul>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="news-post article-post">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a class="category" href="#">Tennis</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <h2><a href="single-post.html">Ramaphosa vows to fight corruption in ruling ANC</a></h2>
-                        <ul class="post-tags">
-                            <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                            <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                        </ul>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="news-post article-post">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a class="category" href="#">Winter Sports</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <h2><a href="single-post.html">The Guardian view on Germany’s coalition deal: Merkel in the balance</a></h2>
-                        <ul class="post-tags">
-                            <li><i class="lnr lnr-user"></i>by <a href="#">John Doe</a></li>
-                            <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
-                        </ul>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                </div>
-            </div>
-            <ul class="pagination-list">
-                <li><a href="#">Prev</a></li>
-                <li><a href="#" class="active">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
+            @endforeach
+                
+            {{ $worldNews->links('vendor.pagination.custom') }}
         </div>
     </div>
     <!-- End Posts-block -->

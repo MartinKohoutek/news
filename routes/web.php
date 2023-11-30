@@ -203,6 +203,7 @@ Route::controller(IndexController::class)->group(function(){
     Route::get('/search/by/date', 'SearchByDate')->name('search.by.date');
     Route::get('/news/search', 'NewsSearch')->name('news.search');
     Route::get('/reporter/all/news/{id}', 'ReporterAllNews')->name('reporter.all.news');
+    Route::get('/news/by/tag/{title}', 'NewsByTag')->name('news.by.tag.title');
 });
 
 Route::controller(ReviewController::class)->group(function(){
