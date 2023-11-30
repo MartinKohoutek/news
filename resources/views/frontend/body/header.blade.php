@@ -94,8 +94,11 @@
                                             </div>
                                             <h2><a href="{{ url('news/details/'.$post->id.'/'.$post->news_title_slug) }}">{{ $post->news_title }}</a></h2>
                                             <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">{{ $post['user']['name'] }}</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                                <li><i class="lnr lnr-user"></i>by <a href="{{ url('/reporter/all/news/'.$post->user->id) }}">{{ $post['user']['name'] }}</a></li>
+                                                @php
+                                                    $countComments = App\Models\Review::where('status', 1)->where('news_id', $post->id)->count();
+                                                @endphp
+                                                <li><a href="{{ url('news/details/'.$post->id.'/'.$post->news_title_slug.'#comments') }}"><i class="lnr lnr-book"></i><span>{{ $countComments }} comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -140,7 +143,7 @@
                     success: function(data) {
                         $('.subcategory_posts#' + data[0].category_id).html('');
                         var d = $('.subcategory_posts#' + data[0].category_id).empty();
-
+                       
                         $.each(data, function(key, value) {
                             val = window.location.origin + '/' + value.image;
                             $('.subcategory_posts#' + data[0].category_id)
@@ -154,8 +157,8 @@
                                             </div>
                                             <h2><a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug}">${value.news_title}</a></h2>
                                             <ul class="post-tags">
-                                                <li><i class="lnr lnr-user"></i>by <a href="#">${value.user.name}</a></li>
-                                                <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                                <li><i class="lnr lnr-user"></i>by <a href="${window.location.origin + '/reporter/all/news/' + value.user.id}">${value.user.name}</a></li>
+                                                <li><a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug + '#comments'}"><i class="lnr lnr-book"></i><span>${value.comments_count} comments</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -181,7 +184,6 @@
                     async: true,
                     dataType: "json",
                     success: function(data) {
-                        console.log(data);
                         $('.subcategory_posts#' + category_id).html('');
                         var d = $('.subcategory_posts#' + category_id).empty();
 
@@ -198,8 +200,8 @@
                                 </div>
                                 <h2><a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug}">${value.news_title}</a></h2>
                                 <ul class="post-tags">
-                                    <li><i class="lnr lnr-user"></i>by <a href="#">${value.user.name}</a></li>
-                                    <li><a href="#"><i class="lnr lnr-book"></i><span>23 comments</span></a></li>
+                                    <li><i class="lnr lnr-user"></i>by <a href="${window.location.origin + '/reporter/all/news/' + value.user.id}">${value.user.name}</a></li>
+                                    <li><a href="${window.location.origin + '/news/details/' + value.id + '/' + value.news_title_slug + '#comments'}"><i class="lnr lnr-book"></i><span>${value.comments_count} comments</span></a></li>
                                 </ul>
                             </div>
                         </div>

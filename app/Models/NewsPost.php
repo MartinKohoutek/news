@@ -22,4 +22,7 @@ class NewsPost extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
     
+    public function comments() {
+        return $this->hasMany(Review::class, 'news_id', 'id')->where('status', 1);
+    }
 }
