@@ -14,7 +14,26 @@ use Illuminate\Support\Facades\Session;
 class IndexController extends Controller
 {
     public function Index() {
-        return view('frontend.index');
+        $skip_cat_0 = Category::skip(1)->first();
+        $skip_news_0 = NewsPost::where('status', 1)->where('category_id', $skip_cat_0->id)->latest()->limit(4)->get();
+
+        $skip_cat_1 = Category::skip(3)->first();
+        $skip_news_1 = NewsPost::where('status', 1)->where('category_id', $skip_cat_1->id)->latest()->limit(4)->get();
+
+        $skip_cat_2 = Category::skip(2)->first();
+        $skip_news_2 = NewsPost::where('status', 1)->where('category_id', $skip_cat_2->id)->latest()->limit(4)->get();
+
+        $skip_cat_3 = Category::skip(4)->first();
+        $skip_news_3 = NewsPost::where('status', 1)->where('category_id', $skip_cat_3->id)->latest()->limit(4)->get();
+
+        $skip_cat_4 = Category::skip(5)->first();
+        $skip_news_4 = NewsPost::where('status', 1)->where('category_id', $skip_cat_4->id)->latest()->limit(4)->get();
+
+        $skip_cat_5 = Category::skip(1)->first();
+        $skip_news_5 = NewsPost::where('status', 1)->where('category_id', $skip_cat_5->id)->latest()->limit(4)->get();
+
+        return view('frontend.index', compact('skip_news_0', 'skip_news_1', 'skip_news_2', 'skip_news_3', 'skip_news_4', 'skip_news_5', 
+        'skip_cat_0', 'skip_cat_1', 'skip_cat_2', 'skip_cat_3', 'skip_cat_4', 'skip_cat_5'));
     }
 
     public function NewsDetails($id, $slug) {

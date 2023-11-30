@@ -48,7 +48,7 @@ $banners = App\Models\Banner::find(1);
                             <li>by <a href="#">{{ $item['user']['name'] }}</a></li>
                             <li><a href="#"><span>23 comments</span></a></li>
                         </ul>
-                        <!-- <p>{!! Str::words($item->news_details, 30, ' ...') !!}</p> -->
+                        <p>{!! Str::words($item->news_details, 30, ' ...') !!}</p>
                     </div>
             </div>
             @endif
@@ -72,7 +72,7 @@ $banners = App\Models\Banner::find(1);
                         <li>by <a href="#">{{ $item['user']['name'] }}</a></li>
                         <li><a href="#"><span>23 comments</span></a></li>
                     </ul>
-                    <!-- <p>{!! Str::words($item->news_details, 30, ' ...') !!}</p> -->
+                    <p>{!! Str::words($item->news_details, 30, ' ...') !!}</p>
                 </div>
             </div>
             @endif
@@ -87,69 +87,29 @@ $banners = App\Models\Banner::find(1);
             <h1>Featured</h1>
         </div>
 
-        <div class="featured-box owl-wrapper">
-            <div class="owl-carousel" data-num="3">
+        <div class="featured-box owl-wrapper2">
+            <div class="owl-carousel2 owl-theme" data-num="3">
 
-                <div class="item">
+                @php
+                $featured = App\Models\NewsPost::where('status', 1)->where('first_section_three', 1)->latest()->limit(5)->get();
+                @endphp
+                @foreach ($featured as $item)
+                <div class="item" style="padding: 0 5px;">
                     <div class="news-post standart-post">
                         <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                                <img src="{{ asset($item->image) }}" alt="">
                             </a>
-                            <a href="#" class="category">football</a>
+                            @if ($item->subcategory_id != null)
+                            <a href="{{ url('/news/subcategory/'.$item->subcategory_id.'/'.$item->subcategory->subcategory_slug) }}" class="category">{{ $item->subcategory->subcategory_name }}</a>
+                            @else
+                            <a href="{{ url('/news/category/'.$item->category_id.'/'.$item->category->category_slug) }}" class="category">{{ $item->category->category_name }}</a>
+                            @endif
                         </div>
-                        <h2><a href="single-post.html">Berlin olimpic stadium </a></h2>
+                        <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }} </a></h2>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="news-post standart-post">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a href="#" class="category">football</a>
-                        </div>
-                        <h2><a href="single-post.html">El classico in Nou Camp</a></h2>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="news-post standart-post">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a href="#" class="category">winter sports</a>
-                        </div>
-                        <h2><a href="single-post.html">ski jumping final in finland</a></h2>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="news-post standart-post">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a href="#" class="category">winter sports</a>
-                        </div>
-                        <h2><a href="single-post.html">ski alpine semi-final today</a></h2>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="news-post standart-post">
-                        <div class="post-image">
-                            <a href="single-post">
-                                <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                            </a>
-                            <a href="#" class="category">Basketball</a>
-                        </div>
-                        <h2><a href="single-post.html">Streetball in USA is making good players</a></h2>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
 
@@ -167,104 +127,74 @@ $banners = App\Models\Banner::find(1);
         <div class="row">
             <div class="col-md-6">
                 <div class="title-section">
-                    <h1>Football</h1>
+                    <h1>{{ $skip_cat_2->category_name }}</h1>
                 </div>
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="single-post">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <img src="{{ asset($skip_news_2[0]->image) }}" alt="">
                         </a>
-                        <a href="#" class="category">Football</a>
+                        @if ($skip_news_2[0]->subcategory_id != null)
+                        <a href="{{ url('/news/subcategory/'.$skip_news_2[0]->subcategory_id.'/'.$skip_news_2[0]->subcategory->subcategory_slug) }}" class="category">{{ $skip_news_2[0]->subcategory->subcategory_name }}</a>
+                        @else
+                        <a href="{{ url('/news/category/'.$skip_news_2[0]->category_id.'/'.$skip_news_2[0]->category->category_slug) }}" class="category">{{ $skip_news_2[0]->category->category_name }}</a>
+                        @endif
                     </div>
-                    <h2><a href="single-post.html">Premier League starts this week</a></h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <h2><a href="{{ url('/news/details/'.$skip_news_2[0]->id.'/'.$skip_news_2[0]->news_title_slug) }}">{{ $skip_news_2[0]->news_title }}</a></h2>
+                    <p>{!! Str::limit($skip_news_2[0]->news_details, 200) !!}</p>
                 </div>
                 <ul class="small-posts">
+                    @foreach ($skip_news_2 as $key => $item)
+                    @if ($key > 0)
                     <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                        <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                            <img src="{{ asset($item->image) }}" alt="">
                         </a>
                         <div class="post-cont">
-                            <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
+                            <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                             <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
+                                <li>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-6">
                 <div class="title-section">
-                    <h1>Basketball</h1>
+                    <h1>{{ $skip_cat_3->category_name }}</h1>
                 </div>
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="single-post">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <img src="{{ asset($skip_news_3[0]->image) }}" alt="">
                         </a>
-                        <a href="#" class="category">Basketball</a>
+                        @if ($skip_news_3[0]->subcategory_id != null)
+                        <a href="{{ url('/news/subcategory/'.$skip_news_3[0]->subcategory_id.'/'.$skip_news_3[0]->subcategory->subcategory_slug) }}" class="category">{{ $skip_news_3[0]->subcategory->subcategory_name }}</a>
+                        @else
+                        <a href="{{ url('/news/category/'.$skip_news_3[0]->category_id.'/'.$skip_news_3[0]->category->category_slug) }}" class="category">{{ $skip_news_3[0]->category->category_name }}</a>
+                        @endif
                     </div>
-                    <h2><a href="single-post.html">NBA MVP this season goes to Lebron James</a></h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <h2><a href="{{ url('/news/details/'.$skip_news_3[0]->id.'/'.$skip_news_3[0]->news_title_slug) }}">{{ $skip_news_3[0]->news_title }}</a></h2>
+                    <p>{!! Str::limit($skip_news_3[0]->news_details, 200) !!}</p>
                 </div>
                 <ul class="small-posts">
+                    @foreach ($skip_news_3 as $key => $item)
+                    @if ($key > 0)
                     <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                        <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                            <img src="{{ asset($item->image) }}" alt="">
                         </a>
                         <div class="post-cont">
-                            <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
+                            <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                             <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
+                                <li>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">Philip Dunne, sacked after his NHS remarks, must now face his constituents</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -277,104 +207,74 @@ $banners = App\Models\Banner::find(1);
         <div class="row">
             <div class="col-md-6">
                 <div class="title-section">
-                    <h1>Tennis</h1>
+                    <h1>{{ $skip_cat_4->category_name }}</h1>
                 </div>
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="single-post">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <img src="{{ asset($skip_news_4[0]->image) }}" alt="">
                         </a>
-                        <a href="#" class="category">Tennis</a>
+                        @if ($skip_news_4[0]->subcategory_id != null)
+                        <a href="{{ url('/news/subcategory/'.$skip_news_4[0]->subcategory_id.'/'.$skip_news_4[0]->subcategory->subcategory_slug) }}" class="category">{{ $skip_news_4[0]->subcategory->subcategory_name }}</a>
+                        @else
+                        <a href="{{ url('/news/category/'.$skip_news_4[0]->category_id.'/'.$skip_news_4[0]->category->category_slug) }}" class="category">{{ $skip_news_4[0]->category->category_name }}</a>
+                        @endif
                     </div>
-                    <h2><a href="single-post.html">New alternatives are more productive</a></h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <h2><a href="{{ url('/news/details/'.$skip_news_4[0]->id.'/'.$skip_news_4[0]->news_title_slug) }}">{{ $skip_news_4[0]->news_title }}</a></h2>
+                    <p>{!! Str::limit($skip_news_4[0]->news_details, 200) !!}</p>
                 </div>
                 <ul class="small-posts">
+                    @foreach ($skip_news_4 as $key => $item)
+                    @if ($key > 0)
                     <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                        <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                            <img src="{{ asset($item->image) }}" alt="">
                         </a>
                         <div class="post-cont">
-                            <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
+                            <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                             <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
+                                <li>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-6">
                 <div class="title-section">
-                    <h1>Winter Sports</h1>
+                    <h1>{{ $skip_cat_5->category_name }}</h1>
                 </div>
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="single-post">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <img src="{{ asset($skip_news_5[0]->image) }}" alt="">
                         </a>
-                        <a href="#" class="category">Winter sports</a>
+                        @if ($skip_news_5[0]->subcategory_id != null)
+                        <a href="{{ url('/news/subcategory/'.$skip_news_5[0]->subcategory_id.'/'.$skip_news_5[0]->subcategory->subcategory_slug) }}" class="category">{{ $skip_news_5[0]->subcategory->subcategory_name }}</a>
+                        @else
+                        <a href="{{ url('/news/category/'.$skip_news_5[0]->category_id.'/'.$skip_news_5[0]->category->category_slug) }}" class="category">{{ $skip_news_5[0]->category->category_name }}</a>
+                        @endif
                     </div>
-                    <h2><a href="single-post.html">Travel Map Guide for Visitors</a></h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <h2><a href="{{ url('/news/details/'.$skip_news_5[0]->id.'/'.$skip_news_5[0]->news_title_slug) }}">{{ $skip_news_5[0]->news_title }}</a></h2>
+                    <p>{!! Str::limit($skip_news_5[0]->news_details, 200) !!}</p>
                 </div>
                 <ul class="small-posts">
+                    @foreach ($skip_news_5 as $key => $item)
+                    @if ($key > 0)
                     <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                        <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                            <img src="{{ asset($item->image) }}" alt="">
                         </a>
                         <div class="post-cont">
-                            <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
+                            <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                             <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
+                                <li>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -387,104 +287,74 @@ $banners = App\Models\Banner::find(1);
         <div class="row">
             <div class="col-md-6">
                 <div class="title-section">
-                    <h1>Baseball</h1>
+                    <h1>{{ $skip_cat_0->category_name }}</h1>
                 </div>
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="single-post">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <img src="{{ asset($skip_news_0[0]->image) }}" alt="">
                         </a>
-                        <a href="#" class="category">Baseball</a>
+                        @if ($skip_news_0[0]->subcategory_id != null)
+                        <a href="{{ url('/news/subcategory/'.$skip_news_0[0]->subcategory_id.'/'.$skip_news_0[0]->subcategory->subcategory_slug) }}" class="category">{{ $skip_news_0[0]->subcategory->subcategory_name }}</a>
+                        @else
+                        <a href="{{ url('/news/category/'.$skip_news_0[0]->category_id.'/'.$skip_news_0[0]->category->category_slug) }}" class="category">{{ $skip_news_0[0]->category->category_name }}</a>
+                        @endif
                     </div>
-                    <h2><a href="single-post.html">New alternatives are more productive</a></h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <h2><a href="{{ url('/news/details/'.$skip_news_0[0]->id.'/'.$skip_news_0[0]->news_title_slug) }}">{{ $skip_news_0[0]->news_title }}</a></h2>
+                    <p>{!! Str::limit($skip_news_0[0]->news_details, 200) !!}</p>
                 </div>
                 <ul class="small-posts">
+                    @foreach ($skip_news_0 as $key => $item)
+                    @if ($key > 0)
                     <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                        <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                            <img src="{{ asset($item->image) }}" alt="">
                         </a>
                         <div class="post-cont">
-                            <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
+                            <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                             <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
+                                <li>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
             <div class="col-md-6">
                 <div class="title-section">
-                    <h1>Extreme sports</h1>
+                    <h1>{{ $skip_cat_1->category_name }}</h1>
                 </div>
                 <div class="news-post standart-post">
                     <div class="post-image">
                         <a href="single-post">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                            <img src="{{ asset($skip_news_1[0]->image) }}" alt="">
                         </a>
-                        <a href="#" class="category">Extreme</a>
+                        @if ($skip_news_1[0]->subcategory_id != null)
+                        <a href="{{ url('/news/subcategory/'.$skip_news_1[0]->subcategory_id.'/'.$skip_news_1[0]->subcategory->subcategory_slug) }}" class="category">{{ $skip_news_1[0]->subcategory->subcategory_name }}</a>
+                        @else
+                        <a href="{{ url('/news/category/'.$skip_news_1[0]->category_id.'/'.$skip_news_1[0]->category->category_slug) }}" class="category">{{ $skip_news_1[0]->category->category_name }}</a>
+                        @endif
                     </div>
-                    <h2><a href="single-post.html">Traditional food</a></h2>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur.</p>
+                    <h2><a href="{{ url('/news/details/'.$skip_news_1[0]->id.'/'.$skip_news_1[0]->news_title_slug) }}">{{ $skip_news_1[0]->news_title }}</a></h2>
+                    <p>{!! Str::limit($skip_news_1[0]->news_details, 200) !!}</p>
                 </div>
                 <ul class="small-posts">
+                    @foreach ($skip_news_1 as $key => $item)
+                    @if ($key > 0)
                     <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
+                        <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
+                            <img src="{{ asset($item->image) }}" alt="">
                         </a>
                         <div class="post-cont">
-                            <h2><a href="single-post.html">Commentary: Spotify’s Unusual IPO Came at the Perfect Time</a></h2>
+                            <h2><a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></h2>
                             <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
+                                <li>by <a href="{{ url('/reporter/all/news/'.$item->user->id) }}">{{ $item->user->name }}</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">5 Key Things to Know About Haiti After Donald Trump's Insult</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="single-post.html">
-                            <img src="{{ asset('upload/news/1782565735848410jpg') }}" alt="">
-                        </a>
-                        <div class="post-cont">
-                            <h2><a href="single-post.html">These Are All the Sam's Club Locations That Are Closing</a></h2>
-                            <ul class="post-tags">
-                                <li>by <a href="#">John Doe</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -637,7 +507,7 @@ $banners = App\Models\Banner::find(1);
                     </div>
 
                     @php
-                        $photoGallery1 = App\Models\PhotoGallery::latest()->limit(4)->get();
+                    $photoGallery1 = App\Models\PhotoGallery::latest()->limit(4)->get();
                     @endphp
                     <div class="homeGallery owl-carousel owl-loaded owl-drag">
                         <div class="owl-stage-outer">
@@ -673,7 +543,7 @@ $banners = App\Models\Banner::find(1);
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach 
+                                @endforeach
                             </div>
                         </div>
                         <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div>

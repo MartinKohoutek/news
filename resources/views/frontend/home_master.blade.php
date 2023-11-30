@@ -193,6 +193,78 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function($) {
+    try {
+		var owlWrap = $('.owl-wrapper2');
+
+		if (owlWrap.length > 0) {
+            
+            if (jQuery().owlCarousel) {
+                console.log('ok')
+				owlWrap.each(function(){
+					var carousel= $(this).find('.owl-carousel2'),
+						dataNum = $(this).find('.owl-carousel2').attr('data-num'),
+						dataNum2,
+						dataNum3;
+
+					if ( dataNum == 1 ) {
+						dataNum2 = 1;
+						dataNum3 = 1;
+					} else if ( dataNum == 2 ) {
+						dataNum2 = 2;
+						dataNum3 = dataNum - 1;
+					} else {
+						dataNum2 = dataNum - 1;
+						dataNum3 = dataNum - 2;
+					}
+
+					carousel.owlCarousel({
+						autoPlay: 10000,
+						navigation : true,
+                        dots: false,
+						items : dataNum,
+						itemsDesktop : [1199,dataNum2],
+						itemsDesktopSmall : [991,dataNum2],
+						itemsTablet : [768, dataNum3],
+					});
+
+				});
+
+			}
+		}
+
+	} catch(err) {
+        console.log(err)
+	}
+});
+    // $('.owl-carousel2').owlCarousel({
+    //         loop: false,
+    //         margin: 10,
+    //         nav: true,
+    //         items: 4,
+    //         dots: false,
+    //         center: true,
+    //         autoplay: true,
+    //         smartSpeed: 1000,
+    //         autoplayTimeout: 5000,
+    //         responsiveClass: true,
+    //         responsive: {
+    //             0: {
+    //                 items: 3,
+    //             },
+    //             480: {
+    //                 items: 3,
+    //             },
+    //             768: {
+    //                 items: 4,
+    //             },
+    //             1000: {
+    //                 items: 4,
+    //             }
+    //         }
+    //     });
+</script>
 </body>
 
 </html>
